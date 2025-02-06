@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progressive Disclosure Form</title>
+  <!-- Pico CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  <meta name="color-scheme" content="light">
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Webfonts -->
+  <link rel="stylesheet" href="https://www.chestertons.co.uk/a/min/1738330258/sites/www-che/css-web-fonts-embedded.css">
+  <style>
+    /* Smooth transition for fieldset appearance */
+    fieldset {
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    [x-cloak] { display: none !important; }
+
+    /* Button-style radio group */
+    .button-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center; /* Center alignment */
+    }
+
+    .button-group label {
+      flex: 1;
+      display: inline-block;
+      text-align: center;
+      min-width: 150px;
+    }
+
+    /* Mobile: Stack buttons vertically */
+    @media (max-width: 600px) {
+      .button-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button-group label {
+        width: 100%;
+      }
+    }
+
+    /* Ensure .horizontal button groups stay inline */
+    .horizontal {
+      flex-direction: row !important;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .horizontal label {
+      width: auto;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    /* Hide the default radio input */
+    .button-group input[type="radio"] {
+      display: none;
+    }
+
+    /* Style the labels as buttons */
+    .button-group label {
+      cursor: pointer;
+      border: 1px solid #A1A1AA;
+      background-color: white;
+      color: var(--pico-contrast-color);
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      transition: 0.2s;
+      border-radius: 5px;
+    }
+
+    /* Checked (Active) State */
+    .button-group input[type="radio"]:checked + label {
+      background-color: #6C207E;
+      color: var(--pico-primary-inverse);
+      border-color: #6C207E;
+    }
+
+    /* Hover effect */
+    .button-group label:hover {
+      background-color: #F0E8F2;
+    }
+
+    /* Make it purple */
+    [type=checkbox]:checked, 
+    [type=checkbox]:checked:active, 
+    [type=checkbox]:checked:focus, 
+    [type=radio]:checked, 
+    [type=radio]:checked:active, 
+    [type=radio]:checked:focus {
+        background-color: #6C207E;
+        border-color: #6C207E;
+    }
+
+    input, select, textarea {
+        border-color: #A1A1AA;
+    }
+
+    input:focus, input:focus-visible {
+        border-color: #6C207E;
+    }
+
+
+    /*Did you know call out */
+    .did-you-know {
+    background-color: #F0E8F2;
+    border-radius: 2em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .did-you-know strong {
+    color: #6C207E;
+    }
+
+    :is(button, [type="submit"], [type="button"], [role="button"]).outline, [type="reset"].outline {
+        border-color: #6C207E;
+        color: #6C207E;
+}
+
+
+.remove :is(button, [type="submit"], [type="button"], [role="button"]).outline, [type="reset"].outline {
+        border-color: red;
+        color: red;
+}
+
+#purchaser-2 > button.outline.remove-purchaser {
+    border-color: red;
+    color: red;
+    
+}
+
+#purchaser-2 > button.outline.remove-purchaser > svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+  </style>
+</head>
+<body>
+    <main class="container-fluid" x-data="{ 
+        buyingPosition: '', 
+        propertyStatus: '', 
+        financing: '', 
+        mip: '', 
+        sourceOfFunds: '', 
+        useLeadenhall: false,
+        useSpringide: false
+      }" 
+      x-effect="useLeadenhall = buyingPosition === 'First Time Buyer'",
+      x-effect="useSpringide = MIP === 'No'">
+      
+      <h2>Build a good purchaser profile</h2>
+      <p>Providing details such as your deposit amount, financing method, and buying position makes your offer more appealing to vendors.</p>
+      
+      <p>Your profile needs attention</p>
+      
+      <section id="progress">
+        <progress value="36" max="100" />
+      </section>
+      
+
+      <!-- Purchaser One Details -->
+<article id="purchasers">
+    <section id="purchaser-1">
+        <h4>Your contact details</h4>
+        <div class="text-input">
+        <label for="purch_1_name">First name</label>
+        <input type="text" id="purch_1_fname" name="purch_1_fname" required>
+    </div>
+
+        <div class="text-input">
+            <label for="purch_1_name">Last name</label>
+            <input type="text" id="purch_1_lname" name="purch_1_lname" required>
+        </div>
+
+        <div class="text-input">
+        <label for="purch_1_mobile">Mobile</label>
+        <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder="+44" required>
+        <small id="valid-helper">Remember to include the full international dialing code</small>
+        </div>
+
+        <div class="text-input">
+            <label for="purch_1_mobile">Email</label>
+            <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder="" required>
+            
+            </div>
+
+        
+
+        <!-- Purchaser One Address -->
+        <div class="text-input">
+            <label for="purch_1_add_l1">Address line 1</label>
+            <input type="text" id="purch_1_add_l1" name="purch_1_add_l1" required>
+        </div>
+
+        <div class="text-input">
+            <label for="purch_1_add_l2">Address line 2</label>
+            <input type="text" id="purch_1_add_l2" name="purch_1_add_l2" required>
+        </div>
+
+        <div class="text-input">
+            <label for="purch_1_add_l3">Address line 3</label>
+            <input type="text" id="purch_1_add_l3" name="purch_1_add_l3" required>
+        </div>
+
+        <div class="text-input">
+            <label for="purch_1_postcode">Postcode</label>
+            <input type="text" id="purch_1_postcode" name="purch_1_postcode" required>
+        </div>
+
+        <hr />
+
+
+        <!-- Purchaser One Employment -->
+        <div class="text-input">
+            <label for="purch_1_occupation">Occupation</label>
+            <input type="text" id="purch_1_occupation" name="purch_1_occupation" required>
+        </div>
+
+        <div class="text-input">
+            <label for="purch_1_employer">Employer</label>
+            <input type="text" id="purch_1_employer" name="purch_1_employer" required>
+        </div>
+        <hr />
+        <button class="outline add-another-purchaser">Add another purchaser</button>
+    </section>
+
+    <br>
+    <!-- Purchaser Two Details -->
+    <section id="purchaser-2">
+        <h4>Purchaser two details</h4>
+        <div class="text-input">
+        <label for="purch_2_name">First name</label>
+        <input type="text" id="purch_2_fname" name="purch_2_fname" required>
+    </div>
+
+        <div class="text-input">
+            <label for="purch_2_name">Last name</label>
+            <input type="text" id="purch_2_lname" name="purch_2_lname" required>
+        </div>
+
+        <div class="text-input">
+        <label for="purch_2_mobile">Mobile</label>
+        <input type="tel" id="purch_2_mobile" name="purch_2_mobile" placeholder="+44" required>
+        <small id="valid-helper">Remember to include the full international dialing code</small>
+        </div>
+
+        
+
+        <!-- Purchaser Two Address -->
+        <div class="text-input">
+            <label for="purch_2_add_l1">Address line 1</label>
+            <input type="text" id="purch_2_add_l1" name="purch_2_add_l1" required>
+        </div>
+
+        <div class="text-input">
+            <label for="purch_2_add_l2">Address line 2</label>
+            <input type="text" id="purch_2_add_l2" name="purch_2_add_l2" required>
+        </div>
+
+        <div class="text-input">
+            <label for="purch_2_add_l3">Address line 3</label>
+            <input type="text" id="purch_2_add_l3" name="purch_2_add_l3" required>
+        </div>
+
+        <div class="text-input">
+            <label for="purch_2_postcode">Postcode</label>
+            <input type="text" id="purch_2_postcode" name="purch_2_postcode" required>
+        </div>
+
+        <hr />
+
+
+        <!-- Purchaser Two Employment -->
+        <div class="text-input">
+            <label for="purch_2_occupation">Occupation</label>
+            <input type="text" id="purch_2_occupation" name="purch_2_occupation" required>
+        </div>
+
+        <div class="text-input">
+            <label for="purch_2_employer">Employer</label>
+            <input type="text" id="purch_2_employer" name="purch_2_employer" required>
+        </div>
+        <hr />
+        <button class="outline remove-purchaser">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="red" className="size-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+          </svg>  Delete second purchaser</button>
+        <button class="outline add-another-purchaser">Add another purchaser</button>
+    </section>
+
+</article>
+
+
+
+      <!-- Buying Position -->
+      <article id="BuyingPosition">
+        <h4>Buying Position</h4>
+        <fieldset class="button-group">
+          <input type="radio" id="firstTimeBuyer" name="buyingPosition" value="First Time Buyer" x-model="buyingPosition" @change="useLeadenhall = (buyingPosition === 'First Time Buyer')" >
+          <label for="firstTimeBuyer">First Time Buyer</label>
+  
+          <input type="radio" id="propertyToSell" name="buyingPosition" value="Property to sell" x-model="buyingPosition">
+          <label for="propertyToSell">Property to sell</label>
+  
+          <input type="radio" id="additionalHome" name="buyingPosition" value="Additional home purchase" x-model="buyingPosition">
+          <label for="additionalHome">Additional home purchase</label>
+  
+          <input type="radio" id="investmentPurchase" name="buyingPosition" value="Investment purchase" x-model="buyingPosition">
+          <label for="investmentPurchase">Investment purchase</label>
+        </fieldset>
+  
+        <!-- Show only if "Property to Sell" is selected -->
+        <section id="Property-to-sell" x-show="buyingPosition === 'Property to sell'">
+            <br>
+          <h4>Your property to sell</h4>
+          <fieldset class="button-group">
+            <input type="radio" id="on-the-market" name="propertyStatus" value="on-the-market" x-model="propertyStatus">
+            <label for="on-the-market">On the market</label>
+  
+            <input type="radio" id="under-offer" name="propertyStatus" value="under-offer" x-model="propertyStatus">
+            <label for="under-offer">Under Offer</label>
+  
+            <input type="radio" id="rented" name="propertyStatus" value="rented" x-model="propertyStatus">
+            <label for="rented">Rented</label>
+  
+            <input type="radio" id="not-yet-on-the-market" name="propertyStatus" value="not-yet-on-the-market" x-model="propertyStatus">
+            <label for="not-yet-on-the-market">Not yet on the market</label>
+          </fieldset>
+        </section>
+  
+        <!-- Show only if "On the market" or "Under Offer" is selected -->
+        <section id="agency-details" x-show="propertyStatus === 'on-the-market' || propertyStatus === 'under-offer'">
+          <br>
+            <h4>Agency details</h4>
+          <label for="agency-name">Agency name</label>
+          <input type="text" id="agency-full-name" name="agency-full-name">
+  
+          <label for="agency-contact-name">Contact name</label>
+          <input type="text" id="agency-contact-name" name="agency-contact-name">
+  
+          <label for="agency-email">Contact email address</label>
+          <input type="email" id="agency-email" name="agency-email">
+  
+          <label for="agency-mobile">Contact number</label>
+          <input type="number" id="agency-mobile" name="agency-mobile">
+        </section>
+      </article>
+  
+      <!-- Financing -->
+      <article id="FinancedHow">
+        <h4>How will your purchase be financed?</h4>
+        <fieldset class="button-group horizontal">
+          <input type="radio" id="cash" name="financing" value="Cash" x-model="financing">
+          <label for="cash">Cash</label>
+  
+          <input type="radio" id="mortgage" name="financing" value="Mortgage" x-model="financing">
+          <label for="mortgage">Mortgage</label>
+        </fieldset>
+  
+        <!-- Show if mortgage is selected -->
+        <section id="MIP" x-show="financing === 'Mortgage'">
+            <br>
+          <h4>Do you have a mortgage in principle?</h4>
+          <fieldset class="button-group horizontal">
+            <input type="radio" id="mip-yes" name="MIP" value="Yes" x-model="mip">
+            <label for="mip-yes">Yes</label>
+
+            <input type="radio" id="mip-no" name="MIP" value="No" x-model="mip">
+            <label for="mip-no">No</label>
+          </fieldset>
+
+          <section id="springtide-offer" x-show="mip === 'No'" x-cloak>
+            <br>
+          <div class="did-you-know">
+            <strong>🔥 Unlock exclusive off-market mortgage deals with Springtide</strong>
+            <p>Can we pass your details on to our trusted mortgage brokers?</p>
+          
+            <label>
+                <input type="checkbox" id="springtide-referral" name="springtide-referral">
+                Yes, refer me to <strong>Springtide</strong> for financing options
+            </label>
+            
+          </div>
+        </section>
+        </section>
+  
+        <section id="deposit-amount" x-show="financing === 'Mortgage'">
+          <h4>Deposit amount</h4>
+          <input type="number" id="deposit-amount" name="deposit-amount" placeholder="£10,000">
+        </section>
+  
+        <section id="lender-advisor" x-show="financing === 'Mortgage'">
+          <h4>Lender / Mortgage advisor</h4>
+          <input type="text" id="lender-advisor" name="lender-advisor">
+        </section>
+      </article>
+  
+      <!-- Source of Cash / Deposit -->
+      <article id="source-of-funds">
+        <h4>Source of Cash/Deposit</h4>
+        <fieldset class="button-group">
+          <input type="radio" id="bank-savings" name="sourceOfFunds" value="bank-savings" x-model="sourceOfFunds">
+          <label for="bank-savings">Bank / Building Society Savings</label>
+  
+          <input type="radio" id="remortgage" name="sourceOfFunds" value="remortgage" x-model="sourceOfFunds">
+          <label for="remortgage">Investment capital release (re-mortgage)</label>
+  
+          <input type="radio" id="property-sale-equity" name="sourceOfFunds" value="Property Sale Equity" x-model="sourceOfFunds">
+          <label for="property-sale-equity">Property Sale Equity</label>
+  
+          <input type="radio" id="gift" name="sourceOfFunds" value="gift" x-model="sourceOfFunds">
+          <label for="gift">Gift</label>
+        </fieldset>
+  
+        <!-- Show if Gift is selected -->
+        <section id="giftor-details" x-show="sourceOfFunds === 'gift'">
+            <br>
+          <h4>Giftor details</h4>
+          <label for="giftor-full-name">Full name</label>
+          <input type="text" id="giftor-full-name" name="giftor-full-name">
+  
+          <label for="giftor-mobile">Mobile</label>
+          <input type="number" id="giftor-mobile" name="giftor-mobile">
+  
+          <label for="giftor-email">Email address</label>
+          <input type="email" id="giftor-email" name="giftor-email">
+
+          <label for="giftor-address">Address</label>
+          <input type="text" id="giftor-address" name="giftor-address">
+
+          <label for="giftor-postcode">Postcode</label>
+          <input type="text" id="giftor-postcode" name="giftor-postcode">
+        </section>
+      </article>
+  
+      <!-- Solicitor Information -->
+      <article>
+        <h4>Solicitor Information</h4>
+        <div class="did-you-know">
+          <strong>🤔 Did you know that sales complete on average 40% faster with our trusted legal partners?</strong>
+        
+          <label>
+            <input type="checkbox" id="useLeadenhall" x-model="useLeadenhall" checked />
+            I want to use <strong>Leadenhall Legal Services</strong> for my property purchase
+          </label>
+          <br>
+          <p>(Uncheck to add your own solicitor details)</p>
+        </div>
+  
+       
+        <!-- Show only if the checkbox is unchecked -->
+      <section id="solicitor_info" x-show="!useLeadenhall" x-cloak>
+        <br>
+        <h5>Solicitor details</h5>
+        <div class="text-input">
+          <label for="full_name">Full name</label>
+          <input type="text" id="full_name" name="full_name" required>
+        </div>
+
+        <div class="text-input">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" required>
+        </div>
+
+        <div class="text-input">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div class="text-input">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="text-input">
+          <label for="solicitor_postcode">Office Postcode</label>
+          <input type="text" id="solicitor_postcode" name="solicitor_postcode" required>
+        </div>
+      </section>
+      </article>
+    </main>
+  </body>
+  
+</html>

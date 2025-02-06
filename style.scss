@@ -1,0 +1,53 @@
+.navbar {
+    background-color: red;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(https://www.chestertons.co.uk/a/min/1738330258/sites/www-che/css-web-fonts-embedded.css);
+  }
+  
+ html, body, input, textarea {
+    font-family: "webSans", sans-serif !important;
+    font-weight: 400;
+}
+
+
+
+
+/* Ensure the label acts like a button */
+.button-group label {
+    display: inline-block;
+    margin: 0;
+  }
+
+  /* Hide the default radio input */
+  .button-group input[type="radio"] {
+    display: none;
+  }
+
+  /* Style the button normally */
+  .button-group button {
+    cursor: pointer;
+    border: 1px solid var(--pico-border-color);
+    background-color: var(--pico-contrast-background);
+    color: var(--pico-contrast-color);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    transition: 0.2s;
+  }
+
+  /* Active (checked) state styling */
+  .button-group input[type="radio"]:checked + button {
+    background-color: var(--pico-primary);
+    color: var(--pico-primary-inverse);
+    border-color: var(--pico-primary);
+  }
+
+  /* Hover effect */
+  .button-group button:hover {
+    background-color: var(--pico-muted-color);
+  }
+
+
+  
