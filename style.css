@@ -44,3 +44,8 @@ html, body, input, textarea {
 .button-group button:hover {
   background-color: var(--pico-muted-color);
 }
+
+
+[role=button], [type=button], [type=file]::file-selector-button, [type=reset], [type=submit], button {
+  background-color: red !important;
+}

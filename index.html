@@ -3,18 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Progressive Disclosure Form</title>
+  <title>Profile</title>
+
   <!-- Pico CSS -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   <meta name="color-scheme" content="light">
+
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- Webfonts -->
   <link rel="stylesheet" href="https://www.chestertons.co.uk/a/min/1738330258/sites/www-che/css-web-fonts-embedded.css">
   <style>
+
+
+
+
     /* Smooth transition for fieldset appearance */
     fieldset {
       transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -150,6 +157,76 @@
     height: 20px;
 }
 
+/* Dialog buttons */
+#saveDialog > article > footer > button.secondary {
+  border-color: red;
+    color: red;
+    background-color: white;
+}
+
+#saveDialog > article > footer > button.primary {
+  border-color: #6C207E;
+  color: white;
+  background-color: #6C207E;
+}
+
+:where(a:not([role=button])), [role=link]  {
+  color: #6C207E;
+}
+
+#openDialog {
+  border-color: #6C207E;
+  color: white;
+  background-color: #6C207E;
+}
+
+
+#list-tasks li {
+  list-style: none;
+}
+
+  .multi-progress {
+    display: flex;
+    flex-direction: column; /* Stack progress bars vertically */
+    gap: 5px; /* Space between bars */
+  }
+
+  .progress-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    background-color: #FAFAFA; /* Light background */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 4px;
+    margin-bottom: 15px;
+  }
+
+  .progress-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #0E9234;
+    font-weight: bold;
+    height: 100%;
+  }
+
+  .full.progress-segment  {
+    color: #E9F9EF;
+  }
+
+  /* Optional: Add a subtle border for better visibility */
+  .progress-bar {
+    border: 1px solid #E0E0E0;
+  }
+
+
+
+
+        
+
 
   </style>
 </head>
@@ -169,60 +246,101 @@
       <h2>Build a good purchaser profile</h2>
       <p>Providing details such as your deposit amount, financing method, and buying position makes your offer more appealing to vendors.</p>
       
-      <p>Your profile needs attention</p>
+      <section>
+        <p><strong>Your profile needs attention</strong></p>
       
-      <section id="progress">
-        <progress value="36" max="100" />
+        <div class="multi-progress">
+      
+          <div> 
+            <a href="#purchaser-1" style="text-decoration: none; "><strong>Contact</strong></a>
+            <div class="progress-bar">
+              <div class="progress-segment full" style="width: 100%; background-color: #22C55E;">100%</div>
+            </div>
+          </div>
+          
+          <div>
+            <a href="#BuyingPosition" style="text-decoration: none;"><strong>Buying position</strong></a>
+            <div class="progress-bar">
+              <div class="progress-segment" style="width: 80%; background-color: #A7E8BF">50%</div>
+            </div>
+          </div>
+      
+          <div>
+            <a href="#FinancedHow" style="text-decoration: none;"><strong>Finances</strong></a>
+            <div class="progress-bar">
+              <div class="progress-segment" style="width: 60%; background-color: #A7E8BF">32%</div>
+            </div>
+          </div>
+      
+          <div>
+            <a href="#source-of-funds" style="text-decoration: none;"><strong>Source of funds</strong></a>
+            <div class="progress-bar">
+              <div class="progress-segment" style="width: 40%; background-color: #A7E8BF">21%</div>
+            </div>
+          </div>
+      
+          <div>
+            <a href="#solicitor_info" style="text-decoration: none;"><strong>Solicitors</strong></a>
+            <div class="progress-bar">
+              <div class="progress-segment" style="width: 20%; background-color: #A7E8BF">43%</div>
+            </div>
+          </div>
+      
+        </div>
       </section>
       
 
+      
+      
+      <form @submit.prevent="validateForm">
       <!-- Purchaser One Details -->
 <article id="purchasers">
     <section id="purchaser-1">
         <h4>Your contact details</h4>
         <div class="text-input">
         <label for="purch_1_name">First name</label>
-        <input type="text" id="purch_1_fname" name="purch_1_fname" required>
+        <input type="text" id="purch_1_fname" name="purch_1_fname"  >
     </div>
 
         <div class="text-input">
             <label for="purch_1_name">Last name</label>
-            <input type="text" id="purch_1_lname" name="purch_1_lname" required>
+            <input type="text" id="purch_1_lname" name="purch_1_lname"  >
         </div>
 
         <div class="text-input">
         <label for="purch_1_mobile">Mobile</label>
-        <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder="+44" required>
+        <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder="+44"  >
         <small id="valid-helper">Remember to include the full international dialing code</small>
         </div>
 
         <div class="text-input">
             <label for="purch_1_mobile">Email</label>
-            <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder="" required>
+            <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder=""  >
             
             </div>
-
+            
+              
         
 
         <!-- Purchaser One Address -->
         <div class="text-input">
             <label for="purch_1_add_l1">Address line 1</label>
-            <input type="text" id="purch_1_add_l1" name="purch_1_add_l1" required>
+            <input type="text" id="purch_1_add_l1" name="purch_1_add_l1"  >
         </div>
 
         <div class="text-input">
             <label for="purch_1_add_l2">Address line 2</label>
-            <input type="text" id="purch_1_add_l2" name="purch_1_add_l2" required>
+            <input type="text" id="purch_1_add_l2" name="purch_1_add_l2"  >
         </div>
 
         <div class="text-input">
             <label for="purch_1_add_l3">Address line 3</label>
-            <input type="text" id="purch_1_add_l3" name="purch_1_add_l3" required>
+            <input type="text" id="purch_1_add_l3" name="purch_1_add_l3"  >
         </div>
 
         <div class="text-input">
             <label for="purch_1_postcode">Postcode</label>
-            <input type="text" id="purch_1_postcode" name="purch_1_postcode" required>
+            <input type="text" id="purch_1_postcode" name="purch_1_postcode"  >
         </div>
 
         <hr />
@@ -231,12 +349,12 @@
         <!-- Purchaser One Employment -->
         <div class="text-input">
             <label for="purch_1_occupation">Occupation</label>
-            <input type="text" id="purch_1_occupation" name="purch_1_occupation" required>
+            <input type="text" id="purch_1_occupation" name="purch_1_occupation"  >
         </div>
 
         <div class="text-input">
             <label for="purch_1_employer">Employer</label>
-            <input type="text" id="purch_1_employer" name="purch_1_employer" required>
+            <input type="text" id="purch_1_employer" name="purch_1_employer"  >
         </div>
         <hr />
         <button class="outline add-another-purchaser">Add another purchaser</button>
@@ -248,17 +366,17 @@
         <h4>Purchaser two details</h4>
         <div class="text-input">
         <label for="purch_2_name">First name</label>
-        <input type="text" id="purch_2_fname" name="purch_2_fname" required>
+        <input type="text" id="purch_2_fname" name="purch_2_fname"  >
     </div>
 
         <div class="text-input">
             <label for="purch_2_name">Last name</label>
-            <input type="text" id="purch_2_lname" name="purch_2_lname" required>
+            <input type="text" id="purch_2_lname" name="purch_2_lname"  >
         </div>
 
         <div class="text-input">
         <label for="purch_2_mobile">Mobile</label>
-        <input type="tel" id="purch_2_mobile" name="purch_2_mobile" placeholder="+44" required>
+        <input type="tel" id="purch_2_mobile" name="purch_2_mobile" placeholder="+44"  >
         <small id="valid-helper">Remember to include the full international dialing code</small>
         </div>
 
@@ -267,22 +385,22 @@
         <!-- Purchaser Two Address -->
         <div class="text-input">
             <label for="purch_2_add_l1">Address line 1</label>
-            <input type="text" id="purch_2_add_l1" name="purch_2_add_l1" required>
+            <input type="text" id="purch_2_add_l1" name="purch_2_add_l1"  >
         </div>
 
         <div class="text-input">
             <label for="purch_2_add_l2">Address line 2</label>
-            <input type="text" id="purch_2_add_l2" name="purch_2_add_l2" required>
+            <input type="text" id="purch_2_add_l2" name="purch_2_add_l2"  >
         </div>
 
         <div class="text-input">
             <label for="purch_2_add_l3">Address line 3</label>
-            <input type="text" id="purch_2_add_l3" name="purch_2_add_l3" required>
+            <input type="text" id="purch_2_add_l3" name="purch_2_add_l3"  >
         </div>
 
         <div class="text-input">
             <label for="purch_2_postcode">Postcode</label>
-            <input type="text" id="purch_2_postcode" name="purch_2_postcode" required>
+            <input type="text" id="purch_2_postcode" name="purch_2_postcode"  >
         </div>
 
         <hr />
@@ -291,12 +409,12 @@
         <!-- Purchaser Two Employment -->
         <div class="text-input">
             <label for="purch_2_occupation">Occupation</label>
-            <input type="text" id="purch_2_occupation" name="purch_2_occupation" required>
+            <input type="text" id="purch_2_occupation" name="purch_2_occupation"  >
         </div>
 
         <div class="text-input">
             <label for="purch_2_employer">Employer</label>
-            <input type="text" id="purch_2_employer" name="purch_2_employer" required>
+            <input type="text" id="purch_2_employer" name="purch_2_employer"  >
         </div>
         <hr />
         <button class="outline remove-purchaser">
@@ -458,7 +576,7 @@
           <strong>🤔 Did you know that sales complete on average 40% faster with our trusted legal partners?</strong>
         
           <label>
-            <input type="checkbox" id="useLeadenhall" x-model="useLeadenhall" checked />
+            <input type="checkbox" id="useLeadenhall" x-model="useLeadenhall" />
             I want to use <strong>Leadenhall Legal Services</strong> for my property purchase
           </label>
           <br>
@@ -472,30 +590,126 @@
         <h5>Solicitor details</h5>
         <div class="text-input">
           <label for="full_name">Full name</label>
-          <input type="text" id="full_name" name="full_name" required>
+          <input type="text" id="full_name" name="full_name"  >
         </div>
 
         <div class="text-input">
           <label for="company">Company</label>
-          <input type="text" id="company" name="company" required>
+          <input type="text" id="company" name="company"  >
         </div>
 
         <div class="text-input">
           <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone" required>
+          <input type="tel" id="phone" name="phone"  >
         </div>
 
         <div class="text-input">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email"  >
         </div>
 
         <div class="text-input">
           <label for="solicitor_postcode">Office Postcode</label>
-          <input type="text" id="solicitor_postcode" name="solicitor_postcode" required>
+          <input type="text" id="solicitor_postcode" name="solicitor_postcode"  >
         </div>
       </section>
       </article>
+    
+  </form>
+
+
+<!-- Save Buttom Dialog -->
+<button type="button" id="openDialog" class="primary">Submit</button>
+
+<dialog id="saveDialog">
+  <article>
+    <header>
+      <button aria-label="Close" id="closeDialog" rel="prev"></button>
+      <p>
+        <strong>🗓️ Saved!</strong>
+      </p>
+    </header>
+    <p>
+      You've updated your profile, but there is still a few pieces outstanding:
+    </p>
+
+    <ul>
+      <li><a href="#BuyingPosition">Buying position</a>
+      <p>Knowing your buying position helps us match you with the right properties and make stronger, more competitive offers.</p></li>
+      <li><a href="#solicitor_info">Solicitors details</a>
+        <p>Having your solicitor’s details allows us to streamline the process and ensure a smoother, faster transaction.</li>
+    </ul>
+
+    <footer>
+      <button class="secondary">Finish later</button>
+      <button class="primary">Continue</button>
+      </footer>
+  </article>
+</dialog>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const openDialogButton = document.getElementById("openDialog");
+    const closeDialogButton = document.getElementById("closeDialog");
+    const saveDialog = document.getElementById("saveDialog");
+    const dialogLinks = saveDialog.querySelectorAll("a[href^='#']"); // Select all anchor links inside dialog
+
+    // Open dialog when clicking the submit button
+    openDialogButton.addEventListener("click", function() {
+      saveDialog.showModal(); // Opens as a modal
+    });
+
+    // Close dialog when clicking the close button
+    closeDialogButton.addEventListener("click", function() {
+      saveDialog.close(); // Closes the dialog
+    });
+
+    // Close dialog and scroll to the section when clicking an internal link
+    dialogLinks.forEach(link => {
+      link.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        const targetId = this.getAttribute("href"); // Get the target section ID
+        saveDialog.close(); // Close the dialog
+
+        // Wait for the dialog to close before scrolling
+        setTimeout(() => {
+          document.querySelector(targetId).scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }, 100);
+      });
+    });
+  });
+</script>
+
+
+
+
+<!-- Nice smooth link transitions -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select all anchor links that point to an ID on the page
+    const pageLinks = document.querySelectorAll("a[href^='#']:not([href='#'])");
+
+    pageLinks.forEach(link => {
+      link.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default jump-to behavior
+        const targetId = this.getAttribute("href"); // Get the target section ID
+
+        if (targetId && document.querySelector(targetId)) {
+          document.querySelector(targetId).scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
+    });
+  });
+</script>
+
+
+            
     </main>
   </body>
   
