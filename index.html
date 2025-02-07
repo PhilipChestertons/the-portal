@@ -224,13 +224,30 @@
 
 
 
+nav {
+  background-color: #6C207E;
+  
+}
 
+nav li a {
+  color: white;
+}
         
 
 
   </style>
 </head>
 <body>
+
+
+  <nav>
+    <ul>
+      <li><a href="#">Settings</a></li>
+      
+      <li><a href="#">Notifications</a></li>
+    </ul>
+  </nav>
+
     <main class="container-fluid" x-data="{ 
         buyingPosition: '', 
         propertyStatus: '', 
@@ -240,7 +257,7 @@
         useLeadenhall: false,
         useSpringide: false
       }" 
-      x-effect="useLeadenhall = buyingPosition === 'First Time Buyer'",
+      ,
       x-effect="useSpringide = MIP === 'No'">
       
       <h2>Build a good purchaser profile</h2>
@@ -432,7 +449,7 @@
       <article id="BuyingPosition">
         <h4>Buying Position</h4>
         <fieldset class="button-group">
-          <input type="radio" id="firstTimeBuyer" name="buyingPosition" value="First Time Buyer" x-model="buyingPosition" @change="useLeadenhall = (buyingPosition === 'First Time Buyer')" >
+          <input type="radio" id="firstTimeBuyer" name="buyingPosition" value="First Time Buyer" x-model="buyingPosition" >
           <label for="firstTimeBuyer">First Time Buyer</label>
   
           <input type="radio" id="propertyToSell" name="buyingPosition" value="Property to sell" x-model="buyingPosition">
@@ -619,7 +636,7 @@
 
 
 <!-- Save Buttom Dialog -->
-<button type="button" id="openDialog" class="primary">Submit</button>
+<button type="button" id="openDialog" class="primary">Save</button>
 
 <dialog id="saveDialog">
   <article>
