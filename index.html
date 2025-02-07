@@ -365,8 +365,6 @@ h1, h2, h4 {
 
         <hr />
 
-
-        <!-- Purchaser One Employment -->
         <div class="text-input">
             <label for="purch_1_occupation">Occupation</label>
             <input type="text" id="purch_1_occupation" name="purch_1_occupation"  >
@@ -377,72 +375,84 @@ h1, h2, h4 {
             <input type="text" id="purch_1_employer" name="purch_1_employer"  >
         </div>
         <hr />
-        <button class="outline add-another-purchaser">Add another purchaser</button>
+
     </section>
 
     <br>
-    <!-- Purchaser Two Details -->
-    <section id="purchaser-2">
-        <h4>Purchaser two details</h4>
-        <div class="text-input">
-        <label for="purch_2_name">First name</label>
-        <input type="text" id="purch_2_fname" name="purch_2_fname"  >
-    </div>
 
-        <div class="text-input">
-            <label for="purch_2_name">Last name</label>
-            <input type="text" id="purch_2_lname" name="purch_2_lname"  >
-        </div>
-
-        <div class="text-input">
-        <label for="purch_2_mobile">Mobile</label>
-        <input type="tel" id="purch_2_mobile" name="purch_2_mobile" placeholder="+44"  >
-        <small id="valid-helper">Remember to include the full international dialing code</small>
-        </div>
-
-        
-
-        <!-- Purchaser Two Address -->
-        <div class="text-input">
-            <label for="purch_2_add_l1">Address line 1</label>
-            <input type="text" id="purch_2_add_l1" name="purch_2_add_l1"  >
-        </div>
-
-        <div class="text-input">
-            <label for="purch_2_add_l2">Address line 2</label>
-            <input type="text" id="purch_2_add_l2" name="purch_2_add_l2"  >
-        </div>
-
-        <div class="text-input">
-            <label for="purch_2_add_l3">Address line 3</label>
-            <input type="text" id="purch_2_add_l3" name="purch_2_add_l3"  >
-        </div>
-
-        <div class="text-input">
-            <label for="purch_2_postcode">Postcode</label>
-            <input type="text" id="purch_2_postcode" name="purch_2_postcode"  >
-        </div>
-
-        <hr />
-
-
-        <!-- Purchaser Two Employment -->
-        <div class="text-input">
-            <label for="purch_2_occupation">Occupation</label>
-            <input type="text" id="purch_2_occupation" name="purch_2_occupation"  >
-        </div>
-
-        <div class="text-input">
-            <label for="purch_2_employer">Employer</label>
-            <input type="text" id="purch_2_employer" name="purch_2_employer"  >
-        </div>
-        <hr />
-        <button class="outline remove-purchaser">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="red" className="size-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-          </svg>  Delete second purchaser</button>
-        <button class="outline add-another-purchaser">Add another purchaser</button>
-    </section>
+    <section x-data="{ show: false }" id="parent-container">
+      <!-- Add Purchaser Button -->
+      <button class="outline add-another-purchaser" @click="show = true">Add another purchaser</button>
+      
+      <!-- Purchaser Two Details (Initially Hidden) -->
+      <section id="purchaser-2" x-show="show" x-transition>
+        <br>
+          <h4>Purchaser Two Details</h4>
+  
+          <div class="text-input">
+              <label for="purch_2_fname">First name</label>
+              <input type="text" id="purch_2_fname" name="purch_2_fname">
+          </div>
+  
+          <div class="text-input">
+              <label for="purch_2_lname">Last name</label>
+              <input type="text" id="purch_2_lname" name="purch_2_lname">
+          </div>
+  
+          <div class="text-input">
+              <label for="purch_2_mobile">Mobile</label>
+              <input type="tel" id="purch_2_mobile" name="purch_2_mobile" placeholder="+44">
+              <small id="valid-helper">Remember to include the full international dialing code</small>
+          </div>
+  
+          
+  
+          <!-- Purchaser Two Address -->
+          <div class="text-input">
+              <label for="purch_2_add_l1">Address line 1</label>
+              <input type="text" id="purch_2_add_l1" name="purch_2_add_l1">
+          </div>
+  
+          <div class="text-input">
+              <label for="purch_2_add_l2">Address line 2</label>
+              <input type="text" id="purch_2_add_l2" name="purch_2_add_l2">
+          </div>
+  
+          <div class="text-input">
+              <label for="purch_2_add_l3">Address line 3</label>
+              <input type="text" id="purch_2_add_l3" name="purch_2_add_l3">
+          </div>
+  
+          <div class="text-input">
+              <label for="purch_2_postcode">Postcode</label>
+              <input type="text" id="purch_2_postcode" name="purch_2_postcode">
+          </div>
+  
+          <hr />
+  
+          <!-- Purchaser Two Employment -->
+          <div class="text-input">
+              <label for="purch_2_occupation">Occupation</label>
+              <input type="text" id="purch_2_occupation" name="purch_2_occupation">
+          </div>
+  
+          <div class="text-input">
+              <label for="purch_2_employer">Employer</label>
+              <input type="text" id="purch_2_employer" name="purch_2_employer">
+          </div>
+  
+          <hr />
+  
+          <!-- Remove Purchaser Two Button -->
+          <button class="outline remove-purchaser" @click="show = false">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+              </svg>  
+              Delete second purchaser
+          </button>
+      </section>
+  </section>
+  
 
 </article>
 
