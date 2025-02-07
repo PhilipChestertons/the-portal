@@ -12,6 +12,9 @@
     font-weight: 400;
 }
 
+  h1, h2, h4 {
+    font-family: "webSans", sans-serif !important;
+  }
 
 
 
@@ -48,9 +51,6 @@
   .button-group button:hover {
     background-color: var(--pico-muted-color);
   }
-
-
-
 
   
   
