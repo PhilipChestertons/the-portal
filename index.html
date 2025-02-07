@@ -7,6 +7,9 @@
 
   <!-- Pico CSS -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+
+  <link rel="stylesheet" href="style.css">
   <meta name="color-scheme" content="light">
 
   <!-- Alpine.js -->
@@ -233,6 +236,8 @@ nav li a {
   color: white;
 }
         
+
+
 
 
   </style>
@@ -514,6 +519,7 @@ nav li a {
         <section id="MIP" x-show="financing === 'Mortgage'">
             <br>
           <h4>Do you have a mortgage in principle?</h4>
+
           <fieldset class="button-group horizontal">
             <input type="radio" id="mip-yes" name="MIP" value="Yes" x-model="mip">
             <label for="mip-yes">Yes</label>
@@ -521,6 +527,14 @@ nav li a {
             <input type="radio" id="mip-no" name="MIP" value="No" x-model="mip">
             <label for="mip-no">No</label>
           </fieldset>
+
+          <span class="tooltip" 
+          data-placement="top"
+          data-tooltip="A written offer mortgage that lender will let you borrow. e.g £300,000.">What is a Mortgage In Priciple?</span>
+
+
+
+
 
           <section id="springtide-offer" x-show="mip === 'No'" x-cloak>
             <br>
@@ -590,14 +604,15 @@ nav li a {
       <article>
         <h4>Solicitor Information</h4>
         <div class="did-you-know">
-          <strong>🤔 Did you know that sales complete on average 40% faster with our trusted legal partners?</strong>
+          <br>
+          <strong>⏱ Did you know that sales complete on average 40% faster with our trusted legal partners?</strong>
         
           <label>
             <input type="checkbox" id="useLeadenhall" x-model="useLeadenhall" />
             I want to use <strong>Leadenhall Legal Services</strong> for my property purchase
           </label>
           <br>
-          <p>(Uncheck to add your own solicitor details)</p>
+          <small>Deselect to use alternative solicitors</small>
         </div>
   
        
@@ -723,6 +738,48 @@ nav li a {
       });
     });
   });
+</script>
+
+
+<script>
+  // tooltips
+  document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".tooltip").forEach((tooltip) => {
+    tooltip.addEventListener("click", (event) => {
+      // Remove any existing tooltips in the body
+      document.querySelectorAll(".tooltip-box").forEach((el) => el.remove());
+
+      // Create tooltip element
+      const tooltipBox = document.createElement("div");
+      tooltipBox.className = "tooltip-box";
+      tooltipBox.textContent = tooltip.getAttribute("data-tooltip");
+      document.body.appendChild(tooltipBox);
+
+      // Position the tooltip
+      const rect = tooltip.getBoundingClientRect();
+      tooltipBox.style.left = `${rect.left + window.scrollX + rect.width / 2}px`;
+      tooltipBox.style.top = `${rect.top + window.scrollY - tooltipBox.offsetHeight - 10}px`;
+
+      // Toggle visibility
+      tooltipBox.classList.add("visible");
+
+      // Close on outside click
+      document.addEventListener(
+        "click",
+        (e) => {
+          if (!tooltip.contains(e.target)) {
+            tooltipBox.remove();
+          }
+        },
+        { once: true }
+      );
+
+      event.stopPropagation();
+    });
+  });
+});
+
+
 </script>
 
 
