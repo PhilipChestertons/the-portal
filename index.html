@@ -264,54 +264,80 @@ h1, h2, h4 {
       }" 
       ,
       x-effect="useSpringide = MIP === 'No'">
+
+      <article>
       
       <h2>Build a good purchaser profile</h2>
       <p>Providing details such as your deposit amount, financing method, and buying position makes your offer more appealing to vendors.</p>
       
-      <section>
-        <p><strong>Your profile needs attention</strong></p>
-      
-        <div class="multi-progress">
-      
-          <div> 
-            <a href="#purchaser-1" style="text-decoration: none; "><strong>Contact</strong></a>
-            <div class="progress-bar">
-              <div class="progress-segment full" style="width: 100%; background-color: #22C55E;">100%</div>
-            </div>
-          </div>
-          
-          <div>
-            <a href="#BuyingPosition" style="text-decoration: none;"><strong>Buying position</strong></a>
-            <div class="progress-bar">
-              <div class="progress-segment" style="width: 80%; background-color: #A7E8BF">50%</div>
-            </div>
-          </div>
-      
-          <div>
-            <a href="#FinancedHow" style="text-decoration: none;"><strong>Finances</strong></a>
-            <div class="progress-bar">
-              <div class="progress-segment" style="width: 60%; background-color: #A7E8BF">32%</div>
-            </div>
-          </div>
-      
-          <div>
-            <a href="#source-of-funds" style="text-decoration: none;"><strong>Source of funds</strong></a>
-            <div class="progress-bar">
-              <div class="progress-segment" style="width: 40%; background-color: #A7E8BF">21%</div>
-            </div>
-          </div>
-      
-          <div>
-            <a href="#solicitor_info" style="text-decoration: none;"><strong>Solicitors</strong></a>
-            <div class="progress-bar">
-              <div class="progress-segment" style="width: 20%; background-color: #A7E8BF">43%</div>
-            </div>
-          </div>
-      
-        </div>
+      <section id="progress">
+        <table>
+          <thead>
+            <th scope="col">Your profile needs attention</th>
+            <th scope="col">Finished</th>
+            
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <a href="#purchaser-1" style="text-decoration: none; ">
+                  <strong>Contact</strong>
+                </a>
+              </th>
+              <td>
+                ⚠️
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row"><a href="#BuyingPosition" style="text-decoration: none;">
+                <strong>Buying position</strong>
+              </a>
+            </th>
+              <td>
+                ⚠️
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">
+                <a href="#FinancedHow" style="text-decoration: none;">
+                  <strong>Finances</strong>
+                </a>
+              </th>
+              <td>
+                ⚠️
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">
+                <a href="#source-of-funds" style="text-decoration: none;">
+                  <strong> Source of funds</strong>
+                </a>
+              </th>
+              <td>
+                ⚠️
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">
+                <a href="#solicitor_info" style="text-decoration: none;">
+                   <strong>Solicitors</strong>
+                </a>
+              </th>
+              <td>
+                ✅
+              </td>
+            </tr>
+
+            
+          </tbody>
+        </table>
       </section>
       
-
+    </article>
       
       
       <form @submit.prevent="validateForm">
