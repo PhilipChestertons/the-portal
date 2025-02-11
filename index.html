@@ -225,7 +225,17 @@
     border: 1px solid #E0E0E0;
   }
 
+  details[open]>summary:not([role]):not(:focus),
+  :focus-visible {
+    border-color: #6C207E;
+  }
 
+  details.dropdown summary:not([role]):focus,
+  details.dropdown summary:not([role]):hover,
+  details.dropdown summary:not([role]):active {
+    border-color: #6C207E;
+    box-shadow: #6C207E;
+  }
 
 nav {
   background-color: #6C207E;
@@ -245,12 +255,46 @@ h1, h2, h4 {
   background: #e64097; border-color: #e64097; color: white;
 }
 
+/* Targeting the range input inside the label */
+label input[type="range"] {
+  width: 100%;
+}
+
+/* Custom styling for the range input */
+input[type="range"] {
+  accent-color: #e64097; /* Uses Pico’s primary color */
+  appearance: none;
+  height: 12px;
+  background: var(--secondary-background);
+  border-radius: 4px;
+  border-color: #e64097;
+}
+
+/* Styling the thumb for Webkit browsers */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: #e64097;
+  border-radius: 50%;
+  border-color: #e64097;
+  cursor: pointer;
+}
+
+/* Styling the thumb for Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: #e64097);
+  border-radius: 50%;
+  cursor: pointer;
+  border-color: #e64097;
+}
+
 
   </style>
 </head>
 <body>
-
-
 
 
     <main class="container-fluid" x-data="{ 
@@ -345,6 +389,18 @@ h1, h2, h4 {
 <article id="purchasers">
     <section id="purchaser-1">
         <h4>Your contact details</h4>
+
+        <select name="select" aria-label="Select" id="purch_1_title" required>
+          <option selected disabled value="">Title</option>
+          <option>Mr</option>
+          <option>Mrs</option>
+          <option>Miss</option>
+          <option>Ms</option>
+          <option>Dr</option>
+          <option>Prof</option>
+        </select>
+
+
         <div class="text-input">
         <label for="purch_1_name">First name</label>
         <input type="text" id="purch_1_fname" name="purch_1_fname"  >
@@ -356,16 +412,15 @@ h1, h2, h4 {
         </div>
 
         <div class="text-input">
-        <label for="purch_1_mobile">Mobile</label>
-        <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder="+44"  >
-        <small id="valid-helper">Remember to include the full international dialing code</small>
+          <label for="purch_1_mobile">Mobile</label>
+          <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder="+44"  >
+          <small id="valid-helper">Remember to include the full international dialing code</small>
         </div>
 
         <div class="text-input">
             <label for="purch_1_mobile">Email</label>
             <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder=""  >
-            
-            </div>
+        </div>
             
               
         
@@ -416,6 +471,16 @@ h1, h2, h4 {
       <section id="purchaser-2" x-show="show" x-transition>
         <br>
           <h4>Purchaser Two Details</h4>
+
+          <select name="select" aria-label="Select" id="purch_2_title" required>
+            <option selected disabled value="">Title</option>
+            <option>Mr</option>
+            <option>Mrs</option>
+            <option>Miss</option>
+            <option>Ms</option>
+            <option>Dr</option>
+            <option>Prof</option>
+          </select>
   
           <div class="text-input">
               <label for="purch_2_fname">First name</label>
@@ -480,9 +545,285 @@ h1, h2, h4 {
           </button>
       </section>
   </section>
-  
+  </article>
 
-</article>
+  <!-- SEARCH ATTRIBUTES BEDROOMS, PRICE, LOCATION 1, LOCATION 2, LOCATION 3, MUST HAVES - GARDEN, PARKING -->
+
+
+
+<!-- PROPERTY SEARCH ATTRIBUTES -->
+
+<section>  
+    <article id="property-attributes">
+      <h4>Your property search</h4>
+
+
+      <p>Type</p>
+    <fieldset class="button-group">
+      <label class="checkbox-btn">
+        <input type="checkbox" name="flat" />
+        <span>Flat</span>
+      </label>
+      <label class="checkbox-btn">
+        <input type="checkbox" name="house" />
+        <span>House</span>
+      </label>
+      <label class="checkbox-btn">
+        <input type="checkbox" name="studio" />
+        <span>Studio</span>
+      </label>
+      <label class="checkbox-btn">
+        <input type="checkbox" name="manhattan" />
+        <span>Manhattan</span>
+      </label>
+      <label class="checkbox-btn">
+        <input type="checkbox" name="penthouse" />
+        <span>Penthouse</span>
+      </label>
+      <label class="checkbox-btn">
+        <input type="checkbox" name="period" />
+        <span>Period</span>
+      </label>
+      <label class="checkbox-btn">
+        <input type="checkbox" name="new-home" />
+        <span>New Home</span>
+      </label>
+    </fieldset>
+<br>
+
+
+
+  <hr>
+    <p>Location</p>
+    <details class="dropdown">
+      <summary>
+        Select a London area…
+      </summary>
+      <ul>
+        <li>
+          <label>
+            <input type="checkbox" name="phase" value="Islington" />
+            Islington
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" name="phase" value="Hampstead" />
+            Hampstead
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" name="phase" value="Crouch End" />
+            Crouch End
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" name="phase" value="Kentish Town" />
+            Kentish Town
+          </label>
+        </li>
+      </ul>
+    </details>
+    
+    <!-- Display selected options here -->
+    <div id="selected-options"></div>
+    
+    <script>
+      // Select all checkboxes
+      const checkboxes = document.querySelectorAll('input[name="phase"]');
+      const selectedOptionsDiv = document.getElementById("selected-options");
+    
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", updateSelectedOptions);
+      });
+    
+      function updateSelectedOptions() {
+        // Get all checked values
+        const selected = Array.from(checkboxes)
+          .filter(checkbox => checkbox.checked)
+          .map(checkbox => checkbox.value);
+    
+        // Update the display
+        selectedOptionsDiv.textContent = selected.length > 0 
+          ? `Searching in: ${selected.join(", ")}` 
+          : "No locations selected.";
+      }
+    </script>
+    
+    <hr>
+    <p>Bedrooms</p>
+    <select name="bedrooms" aria-label="Select" required>
+      <option selected disabled value="">Select</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    <hr>
+    <p>Bathrooms</p>
+    <select name="bathrooms" aria-label="Select" required>
+      <option selected disabled value="">Select</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    <hr>
+    <p>Living rooms</p>
+    <select name="living-rooms" aria-label="Select" required>
+      <option selected disabled value="">Select</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    <hr>
+
+    <p>Must-Haves:</p>
+    <fieldset class="button-group">
+      <label class="checkbox-btn">
+        <input type="checkbox" name="parking" />
+        <span>Parking / Garage</span>
+      </label>
+      <label class="checkbox-btn">
+        <input type="checkbox" name="garden" />
+        <span>Garden / Balcony</span>
+      </label>
+      <label class="checkbox-btn">
+        <input type="checkbox" name="facilities" />
+        <span>Communal Gym / Pool</span>
+      </label>
+      <label class="checkbox-btn">
+        <input type="checkbox" name="concierge" />
+        <span>Concierge</span>
+      </label>
+    </fieldset>
+
+    <hr>
+    <p>Price</p>
+    <label>
+      Min: <strong><span id="priceMinDisplay">£10,000</span></strong>
+      <input type="range" id="priceMinRange" min="10000" max="1000000" step="10000" value="10000" />
+    </label>
+    
+    <label>
+      Max: <strong><span id="priceMaxDisplay">£500,000</span></strong>
+      <input type="range" id="priceMaxRange" min="10000" max="1000000" step="10000" value="500000" />
+    </label>
+    
+    
+    <script>
+      const priceMinRange = document.getElementById("priceMinRange");
+const priceMaxRange = document.getElementById("priceMaxRange");
+const priceMinDisplay = document.getElementById("priceMinDisplay");
+const priceMaxDisplay = document.getElementById("priceMaxDisplay");
+
+function formatCurrency(value) {
+  return `£${parseInt(value).toLocaleString()}`;
+}
+
+// Update display and enforce rules
+function updateMinMax() {
+  const minValue = parseInt(priceMinRange.value);
+  const maxValue = parseInt(priceMaxRange.value);
+
+  // Ensure min is always less than or equal to max
+  if (minValue > maxValue) {
+    priceMaxRange.value = minValue; // Adjust max to match min
+  }
+
+  // Update display
+  priceMinDisplay.textContent = formatCurrency(priceMinRange.value);
+  priceMaxDisplay.textContent = formatCurrency(priceMaxRange.value);
+
+  // Set constraints
+  priceMaxRange.min = minValue; // Ensure max slider cannot go below min
+}
+
+// Attach event listeners
+priceMinRange.addEventListener("input", updateMinMax);
+priceMaxRange.addEventListener("input", updateMinMax);
+
+
+      
+    </script>
+
+    
+    
+    
+
+
+  </article>
+</section>
+
+<style>
+/* Hide the default checkbox */
+.checkbox-btn input[type="checkbox"] {
+  display: none;
+}
+
+/* Base button style */
+.checkbox-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #A1A1AA;
+  background-color: white;
+  color: var(--pico-contrast-color);
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+  user-select: none;
+}
+
+/* Hover effect */
+.checkbox-btn:hover {
+  background-color: #F0E8F2;
+}
+
+/* Properly apply the active state */
+.checkbox-btn input[type="checkbox"]:checked + span {
+  background-color: transparent; /* Prevent override */
+}
+
+/* FIX: Ensure label changes when checkbox is checked */
+.checkbox-btn input[type="checkbox"]:checked + span,
+.checkbox-btn input[type="checkbox"]:checked + span:hover {
+  color: white;
+}
+
+.checkbox-btn input[type="checkbox"]:checked + span::before {
+  background-color: #6C207E;
+  border-color: #6C207E;
+}
+
+/* Make the entire label change color */
+.checkbox-btn input[type="checkbox"]:checked ~ label,
+.checkbox-btn:has(input[type="checkbox"]:checked) {
+  background-color: #6C207E;
+  color: white;
+  border-color: #6C207E;
+}
+
+/* Ensure span remains centered */
+.checkbox-btn span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+</style>
+
+
 
 
 
