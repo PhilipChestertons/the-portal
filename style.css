@@ -3,16 +3,30 @@
 }
 
 @font-face {
-  font-family: myFirstFont;
-  src: url(https://www.chestertons.co.uk/a/min/1738330258/sites/www-che/css-web-fonts-embedded.css);
+  font-family: 'fs_albert_prolight';
+  src: url('fonts/fsalbertpro-light-webfont.woff2') format('woff2'),
+       url('fonts/fsalbertpro-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
+
+@font-face {
+  font-family: 'fs_albert_probold';
+  src: url('fonts/fsalbertpro-bold-webfont.woff2') format('woff2'),
+       url('fonts/fsalbertpro-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 html, body, input, textarea {
-  font-family: "webSans", sans-serif !important;
+  font-family: "fs_albert_prolight", sans-serif !important;
   font-weight: 400;
 }
 
-h1, h2, h4 {
-  font-family: "webSans", sans-serif !important;
+h1, h2, h4, h5 {
+  font-family: "fs_albert_probold", sans-serif !important;
 }
 
 /* Ensure the label acts like a button */
@@ -47,4 +61,36 @@ h1, h2, h4 {
 /* Hover effect */
 .button-group button:hover {
   background-color: var(--pico-muted-color);
+}
+
+/* Counter */
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 200px;
+}
+.counter button {
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.counter input {
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 70px;
+}
+
+
+/* For Chrome, Safari, Edge, and Opera */
+.counter input::-webkit-outer-spin-button,
+.counter input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+.counter input[type=number] {
+    -moz-appearance: textfield;
 }

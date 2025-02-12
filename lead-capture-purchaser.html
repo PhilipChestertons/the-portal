@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Profile</title>
+  <title>Lead Capture Purchaser</title>
 
   <!-- Pico CSS -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
 
 
+    <!-- Webfonts FS Ablert Pro -->
+    <link rel="stylesheet" href="fonts.css">
+
   <link rel="stylesheet" href="style.css">
+  
   <meta name="color-scheme" content="light">
 
   <!-- Alpine.js -->
@@ -18,8 +22,9 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Webfonts -->
-  <link rel="stylesheet" href="https://www.chestertons.co.uk/a/min/1738330258/sites/www-che/css-web-fonts-embedded.css">
+
+
+
   <style>
 
 
@@ -247,6 +252,8 @@ nav li a {
 }
 
 
+
+
 .cta {
   background: #e64097; border-color: #e64097; color: white;
 }
@@ -288,6 +295,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 
+
+
   </style>
 </head>
 <body>
@@ -307,13 +316,13 @@ input[type="range"]::-moz-range-thumb {
 
       <article>
       
-      <h2>Build a good purchaser profile</h2>
-      <p>Providing details such as your deposit amount, financing method, and buying position makes your offer more appealing to vendors.</p>
+      <h2>Purchaser Account Creator</h2>
+      <p>Get lead information, make money 🤑.</p>
       
       <section id="progress">
         <table>
           <thead>
-            <th scope="col">Your profile needs attention</th>
+            <th scope="col">This profile needs attention</th>
             <th scope="col">Finished</th>
             
           </thead>
@@ -350,7 +359,7 @@ input[type="range"]::-moz-range-thumb {
               </td>
             </tr>
 
-            <tr>
+            <!-- <tr>
               <th scope="row">
                 <a href="#source-of-funds" style="text-decoration: none;">
                   <strong> Source of funds</strong>
@@ -359,7 +368,7 @@ input[type="range"]::-moz-range-thumb {
               <td>
                 ⚠️
               </td>
-            </tr>
+            </tr> -->
 
             <tr>
               <th scope="row">
@@ -384,9 +393,9 @@ input[type="range"]::-moz-range-thumb {
       <!-- Purchaser One Details -->
 <article id="purchasers">
     <section id="purchaser-1">
-        <h4>Your contact details</h4>
-
-        <select name="select" aria-label="Select" id="purch_1_title" required>
+        <h4>Contact details</h4>
+      <h5>Lead purchaser</h5>
+        <select name="select" aria-label="Select" id="purch_1_title" >
           <option selected disabled value="">Title</option>
           <option>Mr</option>
           <option>Mrs</option>
@@ -421,7 +430,7 @@ input[type="range"]::-moz-range-thumb {
               
         
 
-        <!-- Purchaser One Address -->
+        <!-- Purchaser One Address 
         <div class="text-input">
             <label for="purch_1_add_l1">Address line 1</label>
             <input type="text" id="purch_1_add_l1" name="purch_1_add_l1"  >
@@ -442,8 +451,10 @@ input[type="range"]::-moz-range-thumb {
             <input type="text" id="purch_1_postcode" name="purch_1_postcode"  >
         </div>
 
-        <hr />
+        <hr /> -->
 
+        <!-- Employer / Occupation info
+        
         <div class="text-input">
             <label for="purch_1_occupation">Occupation</label>
             <input type="text" id="purch_1_occupation" name="purch_1_occupation"  >
@@ -453,7 +464,9 @@ input[type="range"]::-moz-range-thumb {
             <label for="purch_1_employer">Employer</label>
             <input type="text" id="purch_1_employer" name="purch_1_employer"  >
         </div>
-        <hr />
+        <hr /> 
+        
+        -->
 
     </section>
 
@@ -468,7 +481,7 @@ input[type="range"]::-moz-range-thumb {
         <br>
           <h4>Purchaser Two Details</h4>
 
-          <select name="select" aria-label="Select" id="purch_2_title" required>
+          <select name="select" aria-label="Select" id="purch_2_title" >
             <option selected disabled value="">Title</option>
             <option>Mr</option>
             <option>Mrs</option>
@@ -496,7 +509,8 @@ input[type="range"]::-moz-range-thumb {
   
           
   
-          <!-- Purchaser Two Address -->
+          <!-- Purchaser Two Address
+
           <div class="text-input">
               <label for="purch_2_add_l1">Address line 1</label>
               <input type="text" id="purch_2_add_l1" name="purch_2_add_l1">
@@ -517,9 +531,9 @@ input[type="range"]::-moz-range-thumb {
               <input type="text" id="purch_2_postcode" name="purch_2_postcode">
           </div>
   
-          <hr />
+          <hr /> -->
   
-          <!-- Purchaser Two Employment -->
+          <!-- Purchaser Two Employment 
           <div class="text-input">
               <label for="purch_2_occupation">Occupation</label>
               <input type="text" id="purch_2_occupation" name="purch_2_occupation">
@@ -530,7 +544,7 @@ input[type="range"]::-moz-range-thumb {
               <input type="text" id="purch_2_employer" name="purch_2_employer">
           </div>
   
-          <hr />
+          <hr /> -->
   
           <!-- Remove Purchaser Two Button -->
           <button class="outline remove-purchaser" @click="show = false">
@@ -551,8 +565,8 @@ input[type="range"]::-moz-range-thumb {
 
 <section>  
     <article id="property-attributes">
-      <h4>Your property search</h4>
-      <p>The more details you provide about your ideal property, the better we can find the perfect match for you. Plus, you can update and adjust your property preferences anytime.</p>
+      <h4>Property search</h4>
+     
 
       <p><strong>What type of property?</strong></p>
     <fieldset class="button-group">
@@ -656,7 +670,7 @@ input[type="range"]::-moz-range-thumb {
         <path d="M6.204 15.969V2.043C6.204 1.191 5.513.5 4.66.5H2.544C1.691.5 1 1.191 1 2.044v26.324c0 .853.691 1.544 1.544 1.544H4.66c.853 0 1.544-.691 1.544-1.544v-3.396M47.573 15.969V2.043c0-.853.691-1.544 1.544-1.544h2.116c.853 0 1.544.691 1.544 1.544v26.324c0 .853-.69 1.544-1.544 1.544h-2.116a1.544 1.544 0 0 1-1.544-1.544v-3.396M6.203 13.357h41.061M6.5 5.35s12.378-3.1 20.347-3.1c7.97 0 20.348 3.1 20.348 3.1M8.371 12.609a3.906 3.906 0 0 1 3.906-3.906H22.59a3.906 3.906 0 0 1 3.906 3.906M26.983 12.912a3.906 3.906 0 0 1 3.906-3.906h10.314a3.906 3.906 0 0 1 3.905 3.906"/>
       </svg>
       <strong>How many bedrooms?</strong></p>
-    <select name="bedrooms" aria-label="Select" required>
+    <select name="bedrooms" aria-label="Select" >
       <option selected disabled value="">Select</option>
       <option>1</option>
       <option>2</option>
@@ -665,6 +679,9 @@ input[type="range"]::-moz-range-thumb {
       <option>5</option>
     </select>
     <hr>
+
+   
+    
     <p>
       <svg width="49" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title" stroke="#777777" id="icon-bathroom"> 
         <path d="M4.242 27.367H45.09M5.982 2.838c-.631-2.975-3.68-1.864-3.836 0v5.249m23.25 19.355c22.001 0 22.97-14.567 22.87-18.203-.013-.466-.401-.814-.867-.814H1.868c-.466 0-.853.348-.864.813-.087 3.632 1.023 18.204 24.391 18.204Z" />
@@ -672,7 +689,7 @@ input[type="range"]::-moz-range-thumb {
     </svg>
     
       <strong>How many bathrooms?</strong></p>
-    <select name="bathrooms" aria-label="Select" required>
+    <select name="bathrooms" aria-label="Select" >
       <option selected disabled value="">Select</option>
       <option>1</option>
       <option>2</option>
@@ -691,7 +708,7 @@ input[type="range"]::-moz-range-thumb {
     </svg>
     
       <strong>How many living rooms?</strong></p>
-    <select name="living-rooms" aria-label="Select" required>
+    <select name="living-rooms" aria-label="Select" >
       <option selected disabled value="">Select</option>
       <option>1</option>
       <option>2</option>
@@ -767,15 +784,8 @@ priceMinRange.addEventListener("input", updateMinMax);
 priceMaxRange.addEventListener("input", updateMinMax);
 
 
-      
-    </script>
-
-    
-    
-    
-
-
-  </article>
+      </script>
+    </article>
 </section>
 
 <style>
@@ -844,6 +854,7 @@ priceMaxRange.addEventListener("input", updateMinMax);
 
 
 
+
       <!-- Buying Position -->
       <article id="BuyingPosition">
         <h4>Buying Position</h4>
@@ -900,7 +911,7 @@ priceMaxRange.addEventListener("input", updateMinMax);
   
       <!-- Financing -->
       <article id="FinancedHow">
-        <h4>How will your purchase be financed?</h4>
+        <h4>How the purchase be financed?</h4>
         <fieldset class="button-group horizontal">
           <input type="radio" id="cash" name="financing" value="Cash" x-model="financing">
           <label for="cash">Cash</label>
@@ -912,7 +923,7 @@ priceMaxRange.addEventListener("input", updateMinMax);
         <!-- Show if mortgage is selected -->
         <section id="MIP" x-show="financing === 'Mortgage'">
             <br>
-          <h4>Do you have a mortgage in principle?</h4>
+          <h4>Does lead have a mortgage in principle?</h4>
 
           <fieldset class="button-group horizontal">
             <input type="radio" id="mip-yes" name="MIP" value="Yes" x-model="mip">
@@ -921,24 +932,21 @@ priceMaxRange.addEventListener("input", updateMinMax);
             <input type="radio" id="mip-no" name="MIP" value="No" x-model="mip">
             <label for="mip-no">No</label>
           </fieldset>
-
-          <span class="tooltip" 
-          data-placement="top"
-          data-tooltip="A written offer mortgage that lender will let you borrow. e.g £300,000.">What is a Mortgage In Priciple?</span>
-
+          <br>
+          <p>⚠️ We'll need copies of the Mortgage In Principle as evidence of funds before formalising offers to the vendor.</p>
+          
 
 
 
 
           <section id="springtide-offer" x-show="mip === 'No'" x-cloak>
-            <br>
-          <div class="did-you-know">
-            <strong>🔥 Unlock exclusive off-market mortgage deals with Springtide</strong>
+            <div class="did-you-know">
+            <strong>🔥 Earn £10 commission with Springtide</strong>
             <p>Can we pass your details on to our trusted mortgage brokers?</p>
           
             <label>
                 <input type="checkbox" id="springtide-referral" name="springtide-referral">
-                Yes, refer me to <strong>Springtide</strong> for financing options
+                Refer lead to <strong>Springtide</strong> for financing options
             </label>
             
           </div>
@@ -956,7 +964,7 @@ priceMaxRange.addEventListener("input", updateMinMax);
         </section>
       </article>
   
-      <!-- Source of Cash / Deposit -->
+      <!-- Source of Cash / Deposit 
       <article id="source-of-funds">
         <h4>Source of Cash/Deposit</h4>
         <fieldset class="button-group">
@@ -971,9 +979,9 @@ priceMaxRange.addEventListener("input", updateMinMax);
   
           <input type="radio" id="gift" name="sourceOfFunds" value="gift" x-model="sourceOfFunds">
           <label for="gift">Gift</label>
-        </fieldset>
-  
-        <!-- Show if Gift is selected -->
+        </fieldset>  -->
+   
+        <!-- Show if Gift is selected 
         <section id="giftor-details" x-show="sourceOfFunds === 'gift'">
             <br>
           <h4>Giftor details</h4>
@@ -992,25 +1000,26 @@ priceMaxRange.addEventListener("input", updateMinMax);
           <label for="giftor-postcode">Postcode</label>
           <input type="text" id="giftor-postcode" name="giftor-postcode">
         </section>
-      </article>
+      </article> -->
   
       <!-- Solicitor Information -->
       <article>
-        <h4>Solicitor Information</h4>
+        <h4>Solicitor Referral</h4>
         <div class="did-you-know">
-          <br>
-          <strong>⏱ Did you know that sales complete on average 40% faster with our trusted legal partners?</strong>
-        
+          
+          <strong>⏱ Sales complete on average 40% faster with our trusted legal partners</strong>
           <label>
             <input type="checkbox" id="useLeadenhall" x-model="useLeadenhall" />
-            Please share my contact details with <strong>Leadenhall Legal Services</strong> for my property purchase.
+            Customer is happy to share contact details with <strong>Leadenhall Legal Services</strong>.
           </label>
-          <br>
+          
           <small>Deselect to use alternative solicitors</small>
         </div>
   
        
-        <!-- Show only if the checkbox is unchecked -->
+
+    <!--     
+         Show only if the checkbox is unchecked 
       <section id="solicitor_info" x-show="!useLeadenhall" x-cloak>
         <br>
         <h5>Solicitor details</h5>
@@ -1038,41 +1047,42 @@ priceMaxRange.addEventListener("input", updateMinMax);
           <label for="solicitor_postcode">Office Postcode</label>
           <input type="text" id="solicitor_postcode" name="solicitor_postcode"  >
         </div>
-      </section>
+      </section> 
+    -->
+
       </article>
     
   </form>
 
 
 <!-- Save Buttom Dialog -->
-<button type="button" id="openDialog" class="primary pink" style="background: #e64097; border-color: #e64097;">Save</button>
+<button type="button" id="openDialog" class="primary pink" style="background: #e64097; border-color: #e64097; font-family: 'fs_albert_probold';">✨ Create purchaser account</button>
 
 <dialog id="saveDialog">
   <article>
     <header>
       <button aria-label="Close" id="closeDialog" rel="prev"></button>
       <p>
-        <strong>🗓️ Saved!</strong>
+        <strong>✨ Account created!</strong>
       </p>
     </header>
     <p>
-      You've updated your profile, but there is still a few pieces outstanding:
+      We've created a purchaser account, but there is still a few pieces outstanding:
     </p>
 
     <ul>
       <li><a href="#BuyingPosition">Buying position</a>
-      <p>Knowing your buying position helps us match you with the right properties and make stronger, more competitive offers.</p></li>
+      <p>Knowing the buying position helps us match the purchaser with the right properties and make stronger, more competitive offers.</p></li>
       <li><a href="#solicitor_info">Solicitors details</a>
-        <p>Having your solicitor’s details allows us to streamline the process and ensure a smoother, faster transaction.</li>
+        <p>Having the solicitor’s details allows us to streamline the process and ensure a smoother, faster transaction.</li>
     </ul>
-
+    
     <footer>
       <button class="secondary">Finish later</button>
       <button class="primary" >Continue</button>
       </footer>
   </article>
 </dialog>
-
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const openDialogButton = document.getElementById("openDialog");
@@ -1179,10 +1189,6 @@ priceMaxRange.addEventListener("input", updateMinMax);
 
             
     </main>
-
-<footer><a href="lead-capture-purchaser.html">Purchaser Lead Capture</a></footer>
-
-
   </body>
   
 </html>
