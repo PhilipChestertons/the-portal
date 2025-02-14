@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchaser Summary</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+    <main class="container">
+        <h2>Purchaser Details</h2>
+        <p><strong>Title:</strong> <span id="summary_title"></span></p>
+        <p><strong>First Name:</strong> <span id="summary_fname"></span></p>
+        <p><strong>Last Name:</strong> <span id="summary_lname"></span></p>
+        <p><strong>Mobile:</strong> <span id="summary_mobile"></span></p>
+        <p><strong>Email:</strong> <span id="summary_email"></span></p>
+
+        <button id="clearData">Clear Data</button>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const storedData = JSON.parse(localStorage.getItem("leadPurchaser"));
+
+            if (storedData) {
+                document.getElementById("summary_title").textContent = storedData.title || "N/A";
+                document.getElementById("summary_fname").textContent = storedData.firstName || "N/A";
+                document.getElementById("summary_lname").textContent = storedData.lastName || "N/A";
+                document.getElementById("summary_mobile").textContent = storedData.mobile || "N/A";
+                document.getElementById("summary_email").textContent = storedData.email || "N/A";
+            } else {
+                document.body.innerHTML += "<p>No data found. Please fill out the form first.</p>";
+            }
+
+            // Button to clear localStorage data
+            document.getElementById("clearData").addEventListener("click", function () {
+                localStorage.removeItem("leadPurchaser");
+                alert("Data cleared!");
+                window.location.reload();
+            });
+        });
+    </script>
+</body>
+</html>

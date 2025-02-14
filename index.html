@@ -386,7 +386,7 @@ input[type="range"]::-moz-range-thumb {
     <section id="purchaser-1">
         <h4>Your contact details</h4>
 
-        <select name="select" aria-label="Select" id="purch_1_title" required>
+        <select name="select" aria-label="Select" id="purch_1_title" >
           <option selected disabled value="">Title</option>
           <option>Mr</option>
           <option>Mrs</option>
@@ -400,6 +400,7 @@ input[type="range"]::-moz-range-thumb {
         <div class="text-input">
         <label for="purch_1_name">First name</label>
         <input type="text" id="purch_1_fname" name="purch_1_fname"  >
+        
     </div>
 
         <div class="text-input">
@@ -414,8 +415,8 @@ input[type="range"]::-moz-range-thumb {
         </div>
 
         <div class="text-input">
-            <label for="purch_1_mobile">Email</label>
-            <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder=""  >
+            <label for="purch_1_email">Email</label>
+            <input type="tel" id="purch_1_email" name="purch_1_email" placeholder=""  >
         </div>
             
               
@@ -1045,14 +1046,14 @@ priceMaxRange.addEventListener("input", updateMinMax);
 
 
 <!-- Save Buttom Dialog -->
-<button type="button" id="openDialog" class="primary pink" style="background: #e64097; border-color: #e64097;">Save</button>
+<button type="button" id="openDialog" class="primary pink" style="background: #e64097; border-color: #e64097;">💾 Save</button>
 
 <dialog id="saveDialog">
   <article>
     <header>
       <button aria-label="Close" id="closeDialog" rel="prev"></button>
       <p>
-        <strong>🗓️ Saved!</strong>
+        <strong>💾 Saved!</strong>
       </p>
     </header>
     <p>
@@ -1180,9 +1181,138 @@ priceMaxRange.addEventListener("input", updateMinMax);
             
     </main>
 
-<footer><a href="lead-capture-purchaser.html">Purchaser Lead Capture</a></footer>
+<footer>
+    <hr>
+
+  <a href="lead-capture-purchaser.html">Purchaser Lead Capture</a></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve stored data from localStorage
+    const storedData = JSON.parse(localStorage.getItem("leadPurchaser"));
+
+    if (storedData) {
+        console.log("Retrieved Data:", storedData); // Debugging log
 
 
+        // Populate Title
+        if (storedData.title) {
+            document.getElementById("purch_1_title").value = storedData.title;
+        }        
+
+        // Populate Text Fields
+        document.getElementById("purch_1_fname").value = storedData.firstName || "";
+        document.getElementById("purch_1_lname").value = storedData.lastName || "";
+        document.getElementById("purch_1_mobile").value = storedData.mobile || "";
+        document.getElementById("purch_1_email").value = storedData.email || "";
+
+        // Set Dropdowns (Bedrooms, Bathrooms, Living Rooms)
+        if (storedData.bedrooms) document.querySelector('select[name="bedrooms"]').value = storedData.bedrooms;
+        if (storedData.bathrooms) document.querySelector('select[name="bathrooms"]').value = storedData.bathrooms;
+        if (storedData.livingRooms) document.querySelector('select[name="living-rooms"]').value = storedData.livingRooms;
+
+        // Set Checked Checkboxes (Property Type)
+        if (Array.isArray(storedData.propertyType)) {
+            storedData.propertyType.forEach(type => {
+                let checkbox = document.querySelector(`input[name="${type}"]`);
+                if (checkbox) checkbox.checked = true;
+            });
+        }
+
+        // Set Checked Locations
+        if (Array.isArray(storedData.location)) {
+            storedData.location.forEach(loc => {
+                let checkbox = document.querySelector(`input[name="phase"][value="${loc}"]`);
+                if (checkbox) checkbox.checked = true;
+            });
+        }
+
+        // Set Must-Haves Checkboxes
+        if (Array.isArray(storedData.mustHaves)) {
+            storedData.mustHaves.forEach(have => {
+                let checkbox = document.querySelector(`input[name="${have}"]`);
+                if (checkbox) checkbox.checked = true;
+            });
+        }
+
+        // Set Buying Position Radio
+        if (storedData.buyingPosition) {
+            let radio = document.querySelector(`input[name="buyingPosition"][value="${storedData.buyingPosition}"]`);
+            if (radio) {
+                radio.checked = true;
+                radio.dispatchEvent(new Event('change')); // Trigger change event
+            }
+        }
+
+        // Set Financing Radio
+        if (storedData.financing) {
+            let radio = document.querySelector(`input[name="financing"][value="${storedData.financing}"]`);
+            if (radio) {
+                radio.checked = true;
+                radio.dispatchEvent(new Event('change'));
+            }
+        }
+
+        // Set Mortgage in Principle Radio
+        if (storedData.mip) {
+            let radio = document.querySelector(`input[name="MIP"][value="${storedData.mip}"]`);
+            if (radio) {
+                radio.checked = true;
+                radio.dispatchEvent(new Event('change'));
+            }
+        }
+
+        // Set Source of Funds Radio
+        if (storedData.sourceOfFunds) {
+            let radio = document.querySelector(`input[name="sourceOfFunds"][value="${storedData.sourceOfFunds}"]`);
+            if (radio) {
+                radio.checked = true;
+                radio.dispatchEvent(new Event('change'));
+            }
+        }
+
+        // Set Price Range (Min & Max)
+        if (storedData.priceMin) {
+            document.getElementById("priceMinRange").value = storedData.priceMin;
+            document.getElementById("priceMinDisplay").textContent = `£${parseInt(storedData.priceMin).toLocaleString()}`;
+        }
+        if (storedData.priceMax) {
+            document.getElementById("priceMaxRange").value = storedData.priceMax;
+            document.getElementById("priceMaxDisplay").textContent = `£${parseInt(storedData.priceMax).toLocaleString()}`;
+        }
+    } else {
+        console.warn("No stored data found in localStorage.");
+    }
+});
+
+
+
+  </script>
+
+
+
+
+
+
+<!-- Delete Storage Sesh -->
+<button id="clearStorage" class="outline">🗑️ Clear Data</button>
+
+
+<script> // clear local storge data, names n that
+  document.addEventListener("DOMContentLoaded", function () {
+      const clearButton = document.getElementById("clearStorage");
+  
+      clearButton.addEventListener("click", function () {
+          if (confirm("Are you sure you want to clear all stored data?")) {
+              localStorage.clear(); // Wipes all localStorage data
+              alert("Data cleared!");
+              window.location.reload(); // Refresh the page
+          }
+      });
+  });
+  </script>
+  
   </body>
   
 </html>
+

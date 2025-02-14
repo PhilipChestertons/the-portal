@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Purchaser Login</title>
+
+  <!-- Pico CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+
+  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="light">
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Webfonts -->
+  <link rel="stylesheet" href="https://www.chestertons.co.uk/a/min/1738330258/sites/www-che/css-web-fonts-embedded.css">
+  <style>
+
+
+
+
+    /* Smooth transition for fieldset appearance */
+    fieldset {
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    [x-cloak] { display: none !important; }
+
+    /* Button-style radio group */
+    .button-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center; /* Center alignment */
+    }
+
+    .button-group label {
+      flex: 1;
+      display: inline-block;
+      text-align: center;
+      min-width: 150px;
+    }
+
+    /* Mobile: Stack buttons vertically */
+    @media (max-width: 600px) {
+      .button-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button-group label {
+        width: 100%;
+      }
+    }
+
+    /* Ensure .horizontal button groups stay inline */
+    .horizontal {
+      flex-direction: row !important;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .horizontal label {
+      width: auto;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    /* Hide the default radio input */
+    .button-group input[type="radio"] {
+      display: none;
+    }
+
+    /* Style the labels as buttons */
+    .button-group label {
+      cursor: pointer;
+      border: 1px solid #A1A1AA;
+      background-color: white;
+      color: var(--pico-contrast-color);
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      transition: 0.2s;
+      border-radius: 5px;
+    }
+
+    /* Checked (Active) State */
+    .button-group input[type="radio"]:checked + label {
+      background-color: #6C207E;
+      color: var(--pico-primary-inverse);
+      border-color: #6C207E;
+    }
+
+    /* Hover effect */
+    .button-group label:hover {
+      background-color: #F0E8F2;
+    }
+
+    /* Make it purple */
+    [type=checkbox]:checked, 
+    [type=checkbox]:checked:active, 
+    [type=checkbox]:checked:focus, 
+    [type=radio]:checked, 
+    [type=radio]:checked:active, 
+    [type=radio]:checked:focus {
+        background-color: #6C207E;
+        border-color: #6C207E;
+    }
+
+    input, select, textarea {
+        border-color: #A1A1AA;
+    }
+
+    input:focus, input:focus-visible {
+        border-color: #6C207E;
+    }
+
+
+    /*Did you know call out */
+    .did-you-know {
+    background-color: #F0E8F2;
+    border-radius: 2em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .did-you-know strong {
+    color: #6C207E;
+    }
+
+    :is(button, [type="submit"], [type="button"], [role="button"]).outline, [type="reset"].outline {
+        border-color: #6C207E;
+        color: #6C207E;
+}
+
+
+.remove :is(button, [type="submit"], [type="button"], [role="button"]).outline, [type="reset"].outline {
+        border-color: red;
+        color: red;
+}
+
+#purchaser-2 > button.outline.remove-purchaser {
+    border-color: red;
+    color: red;
+    
+}
+
+#purchaser-2 > button.outline.remove-purchaser > svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Dialog buttons */
+#saveDialog > article > footer > button.secondary {
+  border-color: red;
+    color: red;
+    background-color: white;
+}
+
+#saveDialog > article > footer > button.primary {
+  border-color: #6C207E;
+  color: white;
+  background-color: #6C207E;
+}
+
+:where(a:not([role=button])), [role=link]  {
+  color: #6C207E;
+}
+
+#openDialog {
+  border-color: #6C207E;
+  color: white;
+  background-color: #6C207E;
+}
+
+
+#list-tasks li {
+  list-style: none;
+}
+
+  .multi-progress {
+    display: flex;
+    flex-direction: column; /* Stack progress bars vertically */
+    gap: 5px; /* Space between bars */
+  }
+
+  .progress-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    background-color: #FAFAFA; /* Light background */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 4px;
+    margin-bottom: 15px;
+  }
+
+  .progress-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #0E9234;
+    font-weight: bold;
+    height: 100%;
+  }
+
+  .full.progress-segment  {
+    color: #E9F9EF;
+  }
+
+  /* Optional: Add a subtle border for better visibility */
+  .progress-bar {
+    border: 1px solid #E0E0E0;
+  }
+
+  details[open]>summary:not([role]):not(:focus),
+  :focus-visible {
+    border-color: #6C207E;
+  }
+
+  details.dropdown summary:not([role]):focus,
+  details.dropdown summary:not([role]):hover,
+  details.dropdown summary:not([role]):active {
+    border-color: #6C207E;
+    box-shadow: #6C207E;
+  }
+
+nav {
+  background-color: #6C207E;
+  
+}
+
+nav li a {
+  color: white;
+}
+
+
+.cta {
+  background: #e64097; border-color: #e64097; color: white;
+}
+
+/* Targeting the range input inside the label */
+label input[type="range"] {
+  width: 100%;
+}
+
+/* Custom styling for the range input */
+input[type="range"] {
+  accent-color: #e64097; /* Uses Pico’s primary color */
+  appearance: none;
+  height: 12px;
+  background: var(--secondary-background);
+  border-radius: 4px;
+  border-color: #e64097;
+}
+
+/* Styling the thumb for Webkit browsers */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: #e64097;
+  border-radius: 50%;
+  border-color: #e64097;
+  cursor: pointer;
+}
+
+/* Styling the thumb for Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: #e64097);
+  border-radius: 50%;
+  cursor: pointer;
+  border-color: #e64097;
+}
+
+
+  </style>
+</head>
+<body style="background-color: #6C207E; display: flex; flex-direction: column; justify-content: center; align-items: center; align-content: center; height: 100vh;">
+
+
+    <main class="container-fluid" >
+        <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="chestertons-logo-white.svg">
+        <h2 style="color: white;">Welcome to the Portal / CC2.0</h2>
+        </div>
+        <article>
+            <h4>Account login</h4>
+            <form action="index.html">
+            <label for="Email">Email</label>
+            <input type="email" name="email"  aria-label="Email" autocomplete="email">
+            <label for="password">Password</label>
+            <input type="password" name="password" aria-label="Password">
+            <button class="cta" style="width:100%; font-family: 'fs_albert_probold';"  type="submit">Login</button>
+        </form>
+            <br>
+            <br>
+            Forgot your password? You can <a href="#">reset password</a>
+            
+        </article>
+    </main> 
+
+
+
+
+<style>
+/* Hide the default checkbox */
+.checkbox-btn input[type="checkbox"] {
+  display: none;
+}
+
+/* Base button style */
+.checkbox-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #A1A1AA;
+  background-color: white;
+  color: var(--pico-contrast-color);
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+  user-select: none;
+}
+
+/* Hover effect */
+.checkbox-btn:hover {
+  background-color: #F0E8F2;
+}
+
+/* Properly apply the active state */
+.checkbox-btn input[type="checkbox"]:checked + span {
+  background-color: transparent; /* Prevent override */
+}
+
+/* FIX: Ensure label changes when checkbox is checked */
+.checkbox-btn input[type="checkbox"]:checked + span,
+.checkbox-btn input[type="checkbox"]:checked + span:hover {
+  color: white;
+}
+
+.checkbox-btn input[type="checkbox"]:checked + span::before {
+  background-color: #6C207E;
+  border-color: #6C207E;
+}
+
+/* Make the entire label change color */
+.checkbox-btn input[type="checkbox"]:checked ~ label,
+.checkbox-btn:has(input[type="checkbox"]:checked) {
+  background-color: #6C207E;
+  color: white;
+  border-color: #6C207E;
+}
+
+/* Ensure span remains centered */
+.checkbox-btn span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+</style>
+       
+    </main>
+  </body>
+  
+</html>
+
+
+
+
+
+
+
+
+
+
+

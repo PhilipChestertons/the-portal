@@ -334,7 +334,17 @@ input[type="range"]::-moz-range-thumb {
                 </a>
               </th>
               <td>
-                ⚠️
+                ✅
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row"><a href="#property-attributes" style="text-decoration: none;">
+                <strong>Property type</strong>
+              </a>
+            </th>
+              <td>
+                ✅
               </td>
             </tr>
 
@@ -344,9 +354,11 @@ input[type="range"]::-moz-range-thumb {
               </a>
             </th>
               <td>
-                ⚠️
+                ✅
               </td>
             </tr>
+
+            
 
             <tr>
               <th scope="row">
@@ -377,7 +389,7 @@ input[type="range"]::-moz-range-thumb {
                 </a>
               </th>
               <td>
-                ✅
+                ⚠️
               </td>
             </tr>
 
@@ -389,7 +401,7 @@ input[type="range"]::-moz-range-thumb {
     </article>
       
       
-      <form @submit.prevent="validateForm">
+      <form id="lead-purchaser-form">
       <!-- Purchaser One Details -->
 <article id="purchasers">
     <section id="purchaser-1">
@@ -423,8 +435,8 @@ input[type="range"]::-moz-range-thumb {
         </div>
 
         <div class="text-input">
-            <label for="purch_1_mobile">Email</label>
-            <input type="tel" id="purch_1_mobile" name="purch_1_mobile" placeholder=""  >
+            <label for="purch_1_email">Email</label>
+            <input type="tel" id="purch_1_email" name="purch_1_email" placeholder=""  >
         </div>
             
               
@@ -1052,7 +1064,7 @@ priceMaxRange.addEventListener("input", updateMinMax);
 
       </article>
     
-  </form>
+  
 
 
 <!-- Save Buttom Dialog -->
@@ -1061,7 +1073,7 @@ priceMaxRange.addEventListener("input", updateMinMax);
 <dialog id="saveDialog">
   <article>
     <header>
-      <button aria-label="Close" id="closeDialog" rel="prev"></button>
+      <button aria-label="Close" id="closeDialog" rel="prev" ></button>
       <p>
         <strong>✨ Account created!</strong>
       </p>
@@ -1078,8 +1090,9 @@ priceMaxRange.addEventListener("input", updateMinMax);
     </ul>
     
     <footer>
-      <button class="secondary">Finish later</button>
-      <button class="primary" >Continue</button>
+      
+      <button class="primary" type="submit" >Close</button>
+    </form>
       </footer>
   </article>
 </dialog>
@@ -1189,6 +1202,85 @@ priceMaxRange.addEventListener("input", updateMinMax);
 
             
     </main>
+
+
+    <footer>
+      <a href="login-purchaser.html">Puchaser login</a>
+      > 
+      <a href="index.html">Purchaser profile</a>
+      
+        
+    </footer>
   </body>
   
+  
 </html>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Stop actual form submission
+
+        // Capture the form data
+        const formData = {
+            // Contact Details
+            title: document.getElementById("purch_1_title").value,
+            firstName: document.getElementById("purch_1_fname").value,
+            lastName: document.getElementById("purch_1_lname").value,
+            mobile: document.getElementById("purch_1_mobile").value,
+            email: document.getElementById("purch_1_email").value,
+
+            // Property Type (All Checked Boxes)
+            propertyType: Array.from(document.querySelectorAll('input[name="flat"], input[name="house"], input[name="studio"], input[name="manhattan"], input[name="penthouse"], input[name="period"], input[name="new-home"]'))
+                .filter(input => input.checked)
+                .map(input => input.name), 
+
+            // Location (All Checked Locations)
+            location: Array.from(document.querySelectorAll('input[name="phase"]:checked'))
+                .map(input => input.value),
+
+            // No. of Bedrooms
+            bedrooms: document.querySelector('select[name="bedrooms"]').value,
+
+            // No. of Bathrooms
+            bathrooms: document.querySelector('select[name="bathrooms"]').value,
+
+            // No. of Living Rooms
+            livingRooms: document.querySelector('select[name="living-rooms"]').value,
+
+            // Must-Haves (All Checked Boxes)
+            mustHaves: Array.from(document.querySelectorAll('input[name="parking"], input[name="garden"], input[name="facilities"], input[name="concierge"]'))
+                .filter(input => input.checked)
+                .map(input => input.name),
+
+            // Price Range
+            priceMin: document.getElementById("priceMinRange").value,
+            priceMax: document.getElementById("priceMaxRange").value,
+
+            // Buying Position
+            buyingPosition: document.querySelector('input[name="buyingPosition"]:checked')?.value || null,
+
+            // Financing Information
+            financing: document.querySelector('input[name="financing"]:checked')?.value || null,
+            mip: document.querySelector('input[name="MIP"]:checked')?.value || null,
+            sourceOfFunds: document.querySelector('input[name="sourceOfFunds"]:checked')?.value || null,
+        };
+
+        console.log("Captured Form Data:", formData); // Debugging Output
+
+        // Save to localStorage
+        localStorage.setItem("leadPurchaser", JSON.stringify(formData));
+        alert("Data saved! Check the console for captured values.");
+    });
+});
+
+
+  </script>
+  
+
+
+  

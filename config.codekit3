@@ -9,6 +9,28 @@
   ],
   "creatorBuild" : "34680",
   "files" : {
+    "\/chestertons-logo-white.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/chestertons-logo-white.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/fonts-min.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/fonts-min-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
     "\/fonts.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -69,6 +91,14 @@
       "oAP" : "\/lead-capture-purchaser.html",
       "oF" : 0
     },
+    "\/login-purchaser.html" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/login-purchaser.html",
+      "oF" : 0
+    },
     "\/phone.html" : {
       "cB" : 0,
       "ft" : 8192,
@@ -101,6 +131,14 @@
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
+    },
+    "\/summary.html" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/summary.html",
+      "oF" : 0
     }
   },
   "hooks" : [
