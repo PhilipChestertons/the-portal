@@ -315,7 +315,7 @@ input[type="range"]::-moz-range-thumb {
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 1.7em;
-    border: 1px solid #22C55E;
+    border: 1px solid #4085F3;
 }   
 
 
@@ -326,8 +326,8 @@ h2#price {
 
 /* STATUSES */
 .confirmed {
-    background-color: #E9F9EF;
-    color: #22C55E;
+    color: #4085F3;
+    background-color: #EFF6FF;
 }
 .cancelled {
     background-color: #FFE8ED;
@@ -336,6 +336,10 @@ h2#price {
 .unconfirmed {
     background-color: #FBF1E9;
     color: #D77720;
+}
+.completed {
+    background-color: #E9F9EF;
+    color: #22C55E;
 }
 
 #neg-name  {
@@ -421,9 +425,9 @@ iframe,
 </section>
 
 <section id="sub-nav">
-    <a href="viewings.html">Upcoming</a>
-    <a href="#">Completed</a>
-    <a href="#">Cancelled</a>
+  <a href="viewings.html">Upcoming</a>
+  <a href="viewings-completed.html">Completed</a>
+  <a href="viewings-cancelled.html">Cancelled</a>
 </section>
 
 <a href="javascript:void(0);" onclick="history.back();">Back</a>

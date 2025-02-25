@@ -442,8 +442,11 @@ iframe,
 
 
 
+
+
+
 #viewing-status {
-  display: inline-block;
+    display: inline-block;
     position: relative;
     top: -34px;
    margin-bottom: 0;
@@ -452,9 +455,7 @@ iframe,
     padding-top: 3px;
     padding-bottom: 3px;
     border-radius: 1.7em;
-   
-
-    border: 1px solid #22C55E;
+    border: 1px solid #FF1D48;
 } 
 
 body > main > section.viewing-card > section {
@@ -512,10 +513,8 @@ div.viewing-time {
     margin-top: -1em;
 }
 
-.completed, p#viewing-status {
-  background-color: #E9F9EF;
-  color: #22C55E;
-}
+
+
 
 
 div.controls {
@@ -524,6 +523,18 @@ div.controls {
   justify-content: space-between;
   align-items: center;
 }
+
+
+.cancelled, p#viewing-status {
+    background-color: #FFE8ED;
+    color: #FF1D48;
+}
+
+
+.opacity50 {
+  opacity: 0.5;
+}
+
 
   </style>
 </head>
@@ -547,10 +558,10 @@ div.controls {
     </section>
 
     <section id="sub-nav">
-      <a href="viewings.html">Upcoming</a>
-      <a href="viewings-completed.html">Completed</a>
-      <a href="viewings-cancelled.html">Cancelled</a>
-  </section>
+        <a href="viewings.html">Upcoming</a>
+        <a href="viewings-completed.html">Completed</a>
+        <a href="viewings-cancelled.html">Cancelled</a>
+    </section>
 
 
     <section class="viewing-card">
@@ -559,12 +570,12 @@ div.controls {
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="20" height="20" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
           </svg>
-        <p class="date">Saturday 16<sup>th</sup> February</p>
+        <p class="date opacity50"><s>Tuesday 8th<sup>th</sup> January</p></s>
     </div>
 
         <section class="details">
-            <p id="viewing-status" class="completed">Viewing completed</p>
-                <img src="https://www.chestertons.co.uk/_next/image?url=https%3A%2F%2Fmr0.homeflow-assets.co.uk%2Ffiles%2Fphoto%2Fimage%2F44114%2F6570%2F_x_%2FCAM250008_36.jpg&w=1920&q=65" alt="" class="viewing-card-image">
+            <p id="viewing-status" class="cancelled 50opacity">Cancelled</p>
+                <img src="https://www.chestertons.co.uk/_next/image?url=https%3A%2F%2Fmr0.homeflow-assets.co.uk%2Ffiles%2Fphoto%2Fimage%2F43847%2F7047%2F_x_%2FCAM150061_23.jpg&w=1920&q=65" alt="" class="viewing-card-image">
                 
 
 
@@ -572,7 +583,7 @@ div.controls {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="20" height="20" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>    
-                    <p>10:30am</p>
+                    <p class="opacity50"><s>10:30am</s></p>
                 </div>
                 <div class="info">
             <div>
@@ -581,16 +592,13 @@ div.controls {
 
             <div>
             <p>Accompanied by <br>
-            <span>Riley Postwick</span></p>
+            <span>Sam Thorpe</span></p>
             </div>
 
         </div>
 
           <div class="controls">
-            <a href="property-detail-viewed.html">View property details</a>
-
-            <button class="cta" onclick="window.location.href='property-detail-viewed.html#feedback';">📣 Give Feedback</button>
-
+            <a href="#">View property details</a>
           </div>
         </section>
     </section>

@@ -156,6 +156,14 @@
       "oAP" : "\/summary.html",
       "oF" : 0
     },
+    "\/viewings-cancelled.html" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/viewings-cancelled.html",
+      "oF" : 0
+    },
     "\/viewings-completed.html" : {
       "cB" : 0,
       "ft" : 8192,
