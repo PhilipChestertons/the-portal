@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Property Detail</title>
+
+  <!-- Pico CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+
+  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="light">
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Webfonts -->
+  <link rel="stylesheet" href="https://www.chestertons.co.uk/a/min/1738330258/sites/www-che/css-web-fonts-embedded.css">
+  <style>
+
+
+
+
+    /* Smooth transition for fieldset appearance */
+    fieldset {
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    [x-cloak] { display: none !important; }
+
+    /* Button-style radio group */
+    .button-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center; /* Center alignment */
+    }
+
+    .button-group label {
+      flex: 1;
+      display: inline-block;
+      text-align: center;
+      min-width: 150px;
+    }
+
+    /* Mobile: Stack buttons vertically */
+    @media (max-width: 600px) {
+      .button-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button-group label {
+        width: 100%;
+      }
+    }
+
+    /* Ensure .horizontal button groups stay inline */
+    .horizontal {
+      flex-direction: row !important;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .horizontal label {
+      width: auto;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    /* Hide the default radio input */
+    .button-group input[type="radio"] {
+      display: none;
+    }
+
+    /* Style the labels as buttons */
+    .button-group label {
+      cursor: pointer;
+      border: 1px solid #A1A1AA;
+      background-color: white;
+      color: var(--pico-contrast-color);
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      transition: 0.2s;
+      border-radius: 5px;
+    }
+
+    /* Checked (Active) State */
+    .button-group input[type="radio"]:checked + label {
+      background-color: #6C207E;
+      color: var(--pico-primary-inverse);
+      border-color: #6C207E;
+    }
+
+    /* Hover effect */
+    .button-group label:hover {
+      background-color: #F0E8F2;
+    }
+
+    /* Make it purple */
+    [type=checkbox]:checked, 
+    [type=checkbox]:checked:active, 
+    [type=checkbox]:checked:focus, 
+    [type=radio]:checked, 
+    [type=radio]:checked:active, 
+    [type=radio]:checked:focus {
+        background-color: #6C207E;
+        border-color: #6C207E;
+    }
+
+    input, select, textarea {
+        border-color: #A1A1AA;
+    }
+
+    input:focus, input:focus-visible {
+        border-color: #6C207E;
+    }
+
+
+    /*Did you know call out */
+    .did-you-know {
+    background-color: #F0E8F2;
+    border-radius: 2em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .did-you-know strong {
+    color: #6C207E;
+    }
+
+    :is(button, [type="submit"], [type="button"], [role="button"]).outline, [type="reset"].outline {
+        border-color: #6C207E;
+        color: #6C207E;
+}
+
+
+.remove :is(button, [type="submit"], [type="button"], [role="button"]).outline, [type="reset"].outline {
+        border-color: red;
+        color: red;
+}
+
+#purchaser-2 > button.outline.remove-purchaser {
+    border-color: red;
+    color: red;
+    
+}
+
+#purchaser-2 > button.outline.remove-purchaser > svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Dialog buttons */
+#saveDialog > article > footer > button.secondary {
+  border-color: red;
+    color: red;
+    background-color: white;
+}
+
+#saveDialog > article > footer > button.primary {
+  border-color: #6C207E;
+  color: white;
+  background-color: #6C207E;
+}
+
+:where(a:not([role=button])), [role=link]  {
+  color: #6C207E;
+}
+
+#openDialog {
+  border-color: #6C207E;
+  color: white;
+  background-color: #6C207E;
+}
+
+
+#list-tasks li {
+  list-style: none;
+}
+
+  .multi-progress {
+    display: flex;
+    flex-direction: column; /* Stack progress bars vertically */
+    gap: 5px; /* Space between bars */
+  }
+
+  .progress-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    background-color: #FAFAFA; /* Light background */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 4px;
+    margin-bottom: 15px;
+  }
+
+  .progress-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #0E9234;
+    font-weight: bold;
+    height: 100%;
+  }
+
+  .full.progress-segment  {
+    color: #E9F9EF;
+  }
+
+  /* Optional: Add a subtle border for better visibility */
+  .progress-bar {
+    border: 1px solid #E0E0E0;
+  }
+
+  details[open]>summary:not([role]):not(:focus),
+  :focus-visible {
+    border-color: #6C207E;
+  }
+
+  details.dropdown summary:not([role]):focus,
+  details.dropdown summary:not([role]):hover,
+  details.dropdown summary:not([role]):active {
+    border-color: #6C207E;
+    box-shadow: #6C207E;
+  }
+
+nav {
+  background-color: #6C207E;
+  
+}
+
+nav li a {
+  color: white;
+}
+
+
+.cta {
+  background: #e64097; border-color: #e64097; color: white;
+}
+
+/* Targeting the range input inside the label */
+label input[type="range"] {
+  width: 100%;
+}
+
+/* Custom styling for the range input */
+input[type="range"] {
+  accent-color: #e64097; /* Uses Pico’s primary color */
+  appearance: none;
+  height: 12px;
+  background: var(--secondary-background);
+  border-radius: 4px;
+  border-color: #e64097;
+}
+
+/* Styling the thumb for Webkit browsers */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: #e64097;
+  border-radius: 50%;
+  border-color: #e64097;
+  cursor: pointer;
+}
+
+/* Styling the thumb for Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: #e64097);
+  border-radius: 50%;
+  cursor: pointer;
+  border-color: #e64097;
+}
+
+
+#property-headline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+#neg-headshot {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+#right-col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  align-items: end;
+}
+
+#viewing-status {
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 1.7em;
+    border: 1px solid #22C55E;
+}   
+
+
+
+h2#price {
+    color: #6C207E;
+}
+
+/* STATUSES */
+.confirmed {
+    background-color: #E9F9EF;
+    color: #22C55E;
+}
+.cancelled {
+    background-color: #FFE8ED;
+    color: #FF1D48  ;
+}
+.unconfirmed {
+    background-color: #FBF1E9;
+    color: #D77720;
+}
+
+#neg-name  {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+#time-status {
+    display: flex;
+
+}
+
+#right-col {
+    border: 1px solid #EAEAEA;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+#right-col > small {
+    margin-bottom: 4%;
+}
+
+h5#viewing-time {
+    margin-top: 0px;
+}
+
+
+
+
+iframe, 
+#hero-image {
+  border-radius: 10px;
+}
+
+#hero-image {
+  margin-bottom: 1em;
+}
+
+#price {
+  color: #6C207E;
+}
+
+
+@media (max-width: 576px) {
+    #right-col {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  #property-headline {
+    
+  }
+
+  #left-col {
+    
+    width: 100%;
+  }
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+  
+<main class="container-fluid">
+
+  <section id="nav">
+    <a href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+    </a>
+    <h5>Viewings</h5>
+        <a href="notifcations.html">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+              </svg>
+        </a>
+</section>
+
+<section id="sub-nav">
+    <a href="viewings.html">Upcoming</a>
+    <a href="#">Completed</a>
+    <a href="#">Cancelled</a>
+</section>
+
+<a href="javascript:void(0);" onclick="history.back();">Back</a>
+<br><br>
+
+    <article>
+      
+
+    <h2>Property detail</h2>
+
+    <img src="https://www.chestertons.co.uk/_next/image?url=https%3A%2F%2Fmr0.homeflow-assets.co.uk%2Ffiles%2Fphoto%2Fimage%2F43913%2F2598%2F_x_%2FCAM250016_01.jpg&w=1920&q=65" id="hero-image">
+
+    <section id="property-headline" class="grid">
+        <!-- left col --> 
+        <div id="left-col">
+            <h5 id="property-title">Royal College Street, <br> Camden, London, NW1 </h5>
+            <h5 id="price">£450,000</h5>
+        <ul>
+            <li>1 Bedroom</li>
+            <li>1 Bathroom</li>
+            <li>Popular location</li>
+            <li>Top floor flat</li>
+        </ul>
+        <a href="#" class="secondary" id="contact-agent">Copy address</a>
+        
+        </div>
+        <!-- right col -->
+         <div id="right-col">
+            <p id="viewing-status" class="confirmed">Viewing confirmed</p>
+            <h5 id="viewing-time">Friday 29th March, 2:30pm</h5>
+            <small>Accompanied by viewing agent</small>
+            <img src="https://thispersondoesnotexist.com/" id="neg-headshot">
+            <h5 id="neg-name">Sam Thorpe</h5>
+            
+            <a href="#" class="secondary" id="contact-agent">Contact agent</a>
+        </div>
+    
+    
+
+    
+    
+    
+
+</section>
+
+    <section>
+        <p>A one double bedroom apartment situated in a period building moments from both Camden and Kentish Town station. This charming apartment benefits from a bright and airy reception, spacious one double bedroom, kitchen with integrated appliances and a family bathroom.
+            <br><br>
+            Royal College Street is very centrally located and ideally placed for access to Kings Cross and Camden and the excellent amenities associated with this vibrant and lively part of London. The flat is also in the catchment area for Camden School for Girls.</p>
+    </section>
+
+    <section id="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.509820687202!2d-0.13727859999999997!3d51.540549899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b1e91be3d2d%3A0xf1c1747a619302f1!2sRoyal%20College%20St%2C%20London!5e0!3m2!1sen!2suk!4v1740477833374!5m2!1sen!2suk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+    
+
+</article>
+
+<!-- Feedback 
+<article>
+  <form>
+    <h4>Feedback</h4>
+
+    <h4>What are your first impressions?</h4>
+    <fieldset class="button-group">
+        <input type="radio" id="loved-it" name="1st-impressions" value="Loved it" x-model="1st-impressions" >
+        <label for="loved-it">😍 Loved it</label>
+
+        <input type="radio" id="liked-it" name="1st-impressions" value="Liked it" x-model="1st-impressions">
+        <label for="liked-it">🙂 Liked it</label>
+
+        <input type="radio" id="neutral" name="1st-impressions" value="Neutral" x-model="1st-impressions">
+        <label for="neutral">😐 Neutral</label>
+
+        <input type="radio" id="not-for-me" name="1st-impressions" value="Not for me" x-model="1st-impressions">
+        <label for="not-for-me">🙁 Not for me</label>
+      </fieldset>
+
+
+      <br>
+    <h4>How was the property's condition and presentation?</h4>
+    <fieldset class="button-group">
+        <input type="radio" id="excellent-condition" name="condition" value="excellent-condition" x-model="condition" >
+        <label for="excellent-condition">🏡 Excellent</label>
+
+        <input type="radio" id="good-condition" name="condition" value="good-condition" x-model="condition">
+        <label for="good-condition">🏠 Good</label>
+
+        <input type="radio" id="needs-work" name="condition" value="needs-work" x-model="condition">
+        <label for="needs-work">🔨 Needs work</label>
+
+        <input type="radio" id="poor-condition" name="condition" value="poor-condition" x-model="condition">
+        <label for="poor-condition">🏚 Poor</label>
+      </fieldset>
+
+
+      <br>
+    <h4>Does the layout and space work for you?</h4>
+    <fieldset class="button-group">
+        <input type="radio" id="perfect" name="layout" value="perfect-layout" x-model="layout" >
+        <label for="perfect">👌 Perfect</label>
+
+        <input type="radio" id="good-layout" name="layout" value="good-layout" x-model="layout">
+        <label for="good-layout">👍 Good</label>
+
+        <input type="radio" id="could-be-better" name="layout" value="could-be-better" x-model="layout">
+        <label for="could-be-better">🤏 Could be better</label>
+
+        <input type="radio" id="not-suitable" name="layout" value="not-suitable" x-model="layout">
+        <label for="not-suitable">👎 Not suitable</label>
+      </fieldset>
+
+
+
+      <br>
+    <h4>How do you feel about the location?</h4>
+    <fieldset class="button-group">
+        <input type="radio" id="ideal-location" name="location" value="ideal-location" x-model="location" >
+        <label for="ideal-location">📍 Ideal</label>
+
+        <input type="radio" id="good-location" name="location" value="good-location" x-model="location">
+        <label for="good-location">📍 Good</label>
+
+        <input type="radio" id="okay-location" name="location" value="okay-location" x-model="location">
+        <label for="okay-location">📍 Okay</label>
+
+        <input type="radio" id="not-suitable-location" name="location" value="not-suitable-location" x-model="location">
+        <label for="not-suitable-location">📍 Not suitable</label>
+      </fieldset>
+
+      <br>
+    <h4>What do you think about the price?</h4>
+    <fieldset class="button-group">
+        <input type="radio" id="fair-price" name="price" value="fair-price" x-model="price" >
+        <label for="fair-price">🟩 Fair</label>
+
+        <input type="radio" id="overpriced" name="price" value="overpriced" x-model="price">
+        <label for="overpriced">🟥 Overpriced</label>
+
+        <input type="radio" id="underpriced" name="price" value="underpriced" x-model="price">
+        <label for="underpriced">🟧 Underprice</label>
+
+        <input type="radio" id="not-sure-price" name="price" value="not-sure-price" x-model="price">
+        <label for="not-sure-price">⬜️ Not sure</label>
+      </fieldset>
+      
+    <br>
+      <h4>Any external concerns? (parking, garden etc.)</h4>
+      <fieldset class="button-group">
+        <input type="radio" id="concerns-parking" name="concerns" value="Parking" x-model="concerns" >
+        <label for="concerns-parking">🚗 Parking</label>
+
+        <input type="radio" id="concerns-garden" name="concerns" value="Garden" x-model="concerns">
+        <label for="concerns-garden">🌳 Garden</label>
+
+        <input type="radio" id="concerns-surroundings" name="concerns" value="Surrounding" x-model="concerns">
+        <label for="concerns-surroundings">🏗 Surroundings</label>
+
+        <input type="radio" id="concerns-none" name="concerns" value="No concerns" x-model="concerns">
+        <label for="concerns-none">❌ No concerns</label>
+      </fieldset>
+    
+    <br>
+    <h4>What's your next step?</h4>
+    <fieldset class="button-group">
+        <input type="radio" id="proceed" name="next-steps" value="proceed" x-model="next-steps" >
+        <label for="proceed">✅ Interested, want to proceed</label>
+
+        <input type="radio" id="another-viewing" name="next-steps" value="another-viewing" x-model="next-steps">
+        <label for="another-viewing">🔄 Need another viewing</label>
+
+        <input type="radio" id="still-deciding" name="next-steps" value="still-deciding" x-model="next-steps">
+        <label for="still-deciding">🤔 Still deciding</label>
+
+        <input type="radio" id="not-interested" name="next-steps" value="not-interested" x-model="next-steps">
+        <label for="not-interested">❌ Not Interested</label>
+      </fieldset>
+
+      <br>
+      <h4>Any comments about this property?</h4>
+      <textarea name="viewing-comments">
+</textarea>
+
+
+<button class="primary cta" type="submit" >📣 Give Feedback</button>
+</form>
+</article>
+-->
+
+</main>
+
+</body>
+</html>

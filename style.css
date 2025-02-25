@@ -26,7 +26,7 @@ html, body, input, textarea {
 }
 
 h1, h2, h4, h5 {
-  font-family: "fs_albert_probold", sans-serif !important;
+  font-family: "fs_albert_prolight", sans-serif !important;
 }
 
 /* Ensure the label acts like a button */
@@ -93,4 +93,31 @@ h1, h2, h4, h5 {
 /* For Firefox */
 .counter input[type=number] {
     -moz-appearance: textfield;
+}
+
+
+
+#nav {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid #A1A1AA;
+  text-align: center;
+  margin-bottom: 0;
+  
+}
+
+#nav > a:nth-child(3) > svg {
+  width: 20px;
+}
+
+
+#sub-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #A1A1AA;
+  height: 50px;
 }
