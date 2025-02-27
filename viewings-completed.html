@@ -525,6 +525,44 @@ div.controls {
   align-items: center;
 }
 
+
+#labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#offer-summary {
+  background-color: #FAFAFA;
+}
+
+.bold-font {
+  font-family: 'fs_albert_probold';
+}
+
+
+/* OFFER STATUS */
+#offer-summary {
+  padding: 1em;
+}
+
+
+#offer-status {
+  visibility: hidden;
+  display: inline-block;
+    position: relative;
+    top: -34px;
+   margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 1.7em;
+    border: 1px solid #D77720;
+} 
+
+
+
   </style>
 </head>
 <body>
@@ -564,6 +602,10 @@ div.controls {
 
         <section class="details">
             <p id="viewing-status" class="completed">Viewing completed</p>
+            <p id="offer-status" class="unconfirmed">Offer pending</p>
+
+
+
                 <img src="https://www.chestertons.co.uk/_next/image?url=https%3A%2F%2Fmr0.homeflow-assets.co.uk%2Ffiles%2Fphoto%2Fimage%2F44114%2F6570%2F_x_%2FCAM250008_36.jpg&w=1920&q=65" alt="" class="viewing-card-image">
                 
 
@@ -586,12 +628,110 @@ div.controls {
 
         </div>
 
-          <div class="controls">
-            <a href="property-detail-viewed.html">View property details</a>
 
-            <button class="cta" onclick="window.location.href='property-detail-viewed.html#feedback';">📣 Give Feedback</button>
+
+        <a href="property-detail-viewed.html">View property details</a>
+
+        <br> <br>
+
+          <div class="controls">
+            
+
+            <button class="cta outlined" onclick="window.location.href='property-detail-viewed.html#feedback';">📣 Give Feedback</button>
+
+            <button class="cta" id="openOfferModal">💷 Make an offer</button>
+            <!-- IF offer has been made, disable this button and show an offer status -->
 
           </div>
+
+
+          <!-- OFFER MODAL - OFFER AMOUNT -->
+          <dialog id="offerModal">
+            <article id="modalContent">
+              
+                <header>
+                  <button aria-label="Close" id="closeOfferModal" rel="prev"></button>
+                  <p><strong>💷 Make an offer</strong></p>
+                </header>
+
+                <p class="bold-font">Durdans House, Royal College Street, London, NW1 9RD</p>
+                <p id="property-price" class="bold-font">£850,000</p>
+          
+                <div class="text-input">
+                  <div id="labels">
+                    <label for="offer-amount">Offer amount</label> 
+                    <label>
+                      Full asking price
+                      <input name="terms" type="checkbox" role="switch" />
+                    </label>
+                  </div> 
+                  <input type="tel" id="offer-amount" name="offer-amount">
+                </div>
+          
+                <div class="text-input">
+                  <label for="offer-exchange-date">Expected exchange date</label>
+                  <input type="date" name="offer-exchange-date" aria-label="Date">
+                </div>
+          
+                <div class="text-input">
+                  <label for="offer-completion-date">Ideal completion date</label>
+                  <input type="date" name="offer-completion-date" aria-label="Date">
+                </div>
+          
+                <div class="text-input">
+                  <label for="offer-conditions">Offer comments</label>
+                  <input type="text" id="offer-conditions" name="offer-conditions">
+                </div>
+          
+                <footer>
+                  <button class="secondary" id="closeOfferModalFooter">Cancel</button>
+                  <button id="confirmOffer" class="cta">Confirm</button>
+                </footer>
+              </div>
+          
+            </article>
+          </dialog>
+
+<!-- OFFER MODAL - ARE YOU SURE? -->
+<dialog id="Are-You-Sure">
+  <article id="modalContent">
+    <header>
+      <button aria-label="Close" id="closeOfferModal" rel="prev"></button>
+      <p><strong>💷 Make an offer</strong></p>
+    </header>
+
+    <p>Are you sure?</p>
+    <p>Your offer for <span class="bold-font">Durdans House, Royal College Street, London, NW1 9RD</span> will be sent to Camden, who will relay it to the homeowner.</p>
+
+    <section id="offer-summary">
+      <p class="bold-font">£850,000</p>
+      <p id="offer-comments">We're pleased to make an offer on the condition of a full property survey and that the property be taken off the market.</p>
+    </section>
+
+    <footer>
+      <p>Would you like to continue?</p>
+      <button class="secondary" id="closeOfferModalFooter">Back</button>
+      <button id="SubmitOffer" class="cta">Submit offer</button>
+    </footer>
+  </article>
+</dialog>
+
+<!-- OFFER MODAL - SUBMITTED -->
+<dialog id="Offer-Submitted">
+  <article id="modalContent">
+    <header>
+      <button aria-label="Close" id="closeOfferModal" rel="prev"></button>
+      <p><strong>🤞 Offer submitted</strong></p>
+    </header>
+
+    <p>We'll be in touch once we've spoken to the homeowner.</p>
+
+    <footer>
+      <button id="close" class="cta">Close</button>
+    </footer>
+  </article>
+</dialog>
+
         </section>
     </section>
 
@@ -601,5 +741,30 @@ div.controls {
 
 </main>
 
+<!-- link to offer module -->
+<script src="dynamicContent.js"></script>
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const checkbox = document.querySelector('input[name="terms"]');
+      const offerAmountInput = document.getElementById("offer-amount");
+
+      if (checkbox && offerAmountInput) {
+          checkbox.addEventListener("change", function () {
+              if (this.checked) {
+                  offerAmountInput.value = "£850,000"; // Set default offer value
+              } else {
+                  offerAmountInput.value = ""; // Clear input when unchecked
+              }
+          });
+      }
+  });
+</script>
+
 </body>
 </html>
+

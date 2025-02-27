@@ -121,3 +121,9 @@ h1, h2, h4, h5 {
   border-bottom: 1px solid #A1A1AA;
   height: 50px;
 }
+
+button.outlined {
+  background-color: white;
+  color: #6C207E;
+  border-color: #6C207E;
+}

@@ -416,7 +416,28 @@ iframe,
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
         </svg>
     </a>
-    <h5>Viewings</h5>
+
+    <select id="navSelect" onchange="navigateToPage()">
+      <option value="index.html">Home</option>
+      <option value="viewings.html">Viewings</option>
+      <option value="offers.html">Offers</option>
+      <option value="profile.html">Profile</option>
+  </select>
+  
+  <script>
+  function navigateToPage() {
+      var selectMenu = document.getElementById("navSelect");
+      var selectedValue = selectMenu.value;
+  
+      if (selectedValue) {
+          window.location.href = selectedValue;
+      }
+  }
+  </script>
+  
+
+
+    
         <a href="notifcations.html">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
@@ -436,8 +457,8 @@ iframe,
     <article>
       
 
-    <h2>Property detail</h2>
-
+    
+      
     <img src="https://www.chestertons.co.uk/_next/image?url=https%3A%2F%2Fmr0.homeflow-assets.co.uk%2Ffiles%2Fphoto%2Fimage%2F43913%2F2598%2F_x_%2FCAM250016_01.jpg&w=1920&q=65" id="hero-image">
 
     <section id="property-headline" class="grid">
@@ -617,7 +638,63 @@ iframe,
 </article>
 -->
 
+
+
+
 </main>
 
+
+<style>
+  #navigation div {
+    display: flex;
+    justify-content: space-between; /* Space out buttons */
+    align-items: center; /* Align vertically */
+    flex-wrap: nowrap; /* Prevent wrapping */
+   
+    padding: 10px; /* Padding for spacing */
+}
+
+#navigation button {
+    flex: 1; /* Makes each button take equal width */
+    min-width: 80px; /* Prevents buttons from getting too small */
+    max-width: 150px; /* Prevents them from stretching too much */
+    padding: 10px 15px; /* Adjust padding */
+    white-space: nowrap; /* Prevents text from breaking */
+}
+
+[role=button],[type=button],[type=file]::file-selector-button,[type=reset],[type=submit],button {
+    --pico-background-color: white;
+    --pico-border-color: #A1A1AA;
+    --pico-color: #A1A1AA;;
+    --pico-box-shadow: var(--pico-button-box-shadow, 0 0 0 rgba(0, 0, 0, 0));
+    padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal);
+    border: var(--pico-border-width) solid var(--pico-border-color);
+    border-radius: var(--pico-border-radius);
+    outline: 0;
+    background-color: var(--pico-background-color);
+    box-shadow: var(--pico-box-shadow);
+    color: var(--pico-color);
+    font-weight: var(--pico-font-weight);
+    font-size: 1rem;
+    line-height: var(--pico-line-height);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    transition: background-color var(--pico-transition),border-color var(--pico-transition),color var(--pico-transition),box-shadow var(--pico-transition)
+}
+
+[role=button]:is(:hover,:active,:focus),[role=button]:is([aria-current]:not([aria-current=false])),[type=button]:is(:hover,:active,:focus),[type=button]:is([aria-current]:not([aria-current=false])),[type=file]::file-selector-button:is(:hover,:active,:focus),[type=file]::file-selector-button:is([aria-current]:not([aria-current=false])),[type=reset]:is(:hover,:active,:focus),[type=reset]:is([aria-current]:not([aria-current=false])),[type=submit]:is(:hover,:active,:focus),[type=submit]:is([aria-current]:not([aria-current=false])),button:is(:hover,:active,:focus),button:is([aria-current]:not([aria-current=false])) {
+    --pico-background-color: #A1A1AA;
+    --pico-border-color: var(--pico-primary-hover-border);
+    --pico-box-shadow: var(--pico-button-hover-box-shadow, 0 0 0 rgba(0, 0, 0, 0));
+    --pico-color: var(--pico-primary-inverse)
+}
+
+
+</style>
+</main>
 </body>
 </html>
