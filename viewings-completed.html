@@ -563,9 +563,194 @@ div.controls {
 
 
 
+/* NOTIFCATIONS */
+#notifcations {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Start off-screen */
+  width: 300px; /* Adjust width as needed */
+  height: 100vh;
+  border: none;
+  padding: 0;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+}
+
+#notifcations.open {
+  right: 0;
+}
+
+#notifcations:not(.open) {
+  right: -100%;
+}
+
+
+
+
+
+#notifcations > article {
+  height: 100vh;
+}
+
+
+
+img.notification-portrait {
+  width: 33px;
+  height: 33px;
+  border-radius: 20px;
+  background-color: #6C207E;
+  margin-right: 0.7em;
+}
+
+
+.name-message {
+
+}
+
+
+.notifcation-card {
+  
+  display: flex;
+  
+  border-bottom: 1px solid #e7eaf0;
+  padding-bottom: 1em;
+}
+
+small.date {
+  text-align: right;
+}
+
+.name-message {
+  
+  display: flex;
+  justify-content: space-between;
+}
+
+
+span#notificaton-number
+  {
+    width: 20px; /* Adjust size as needed */
+height: 20px;
+border-radius: 50%;
+background-color: #4085F3; /* Set circle color */
+display: inline-flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 0.7em;
+  }
+
+
+
+  .unread
+  {
+    width: 8px; /* Adjust size as needed */
+height: 8px;
+border-radius: 50%;
+background-color: #4085F3; /* Set circle color */
+display: inline-flex;
+align-items: center;
+justify-content: center;
+  }
+
+
+div.name-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+div.notifcation-card {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+#icon-notification-bell {
+  visibility: hidden; /* Show or Hide Visibility */
+  width: 8px; /* Adjust size as needed */
+height: 8px;
+border-radius: 50%;
+background-color: #4085F3; /* Set circle color */
+display: inline-flex;
+align-items: center;
+justify-content: center;
+position: relative;
+top: -9px;
+right: 11px;
+}
+
+
   </style>
 </head>
 <body>
+
+  <dialog id="notifcations">
+    <article>
+      <header>
+        <button aria-label="Close" rel="prev"></button>
+        <p>
+          <strong>Notifcations</strong>  <span id="notificaton-number">1</span>
+        </p>
+      </header>
+      
+
+       <!-- actual notifcation-->
+    <section>
+      <div class="notifcation-card">
+      <img src="data:image/png;base64,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" class="notification-portrait">
+      
+      <div>
+      <div class="name-date">
+      <small class="name bold-font">ChesterBot</small>
+      
+      <small class="date bold-font" >Now <div class="unread"></div></small>
+      </div>
+      
+      <p class="message">Your offer of £850,000 for St. Pauls Cresent, Camden, NW1 has been sent.</p>
+       
+    </div>
+  </section>
+
+
+    <!-- actual notifcation-->
+    <section>
+      <div class="notifcation-card">
+      <img src="https://thispersondoesnotexist.com/" class="notification-portrait">
+      
+      <div>
+      <div class="name-date">
+      <small class="name">Riley Postwick</small>
+      <small class="date">15<sup>th</sup> Sept</small>
+      </div>
+      
+      <p class="message">You need to add your Source of Funds before you can make offers.</p>
+        <button class="cta">Add content</button>
+    </div>
+  </section>
+
+
+    <!-- actual notifcation-->
+    <section>
+      <div class="notifcation-card">
+      <img src="https://thispersondoesnotexist.com/" class="notification-portrait">
+      
+      <div>
+      <div class="name-date">
+      <small class="name">Sam Costessey</small>
+      <small class="date">2<sup>nd</sup> Sept</small>
+      </div>
+      
+      <p class="message">Welcome to the Portal! 🎉 You can upload documents, manage viewings and make offers.</p>
+        
+    </div>
+  </section>
+    </article>
+  </dialog>
+
+
     <!-- background image to trace over! -->
      <!-- <div id="layout-guide"></div> -->
 
@@ -577,10 +762,11 @@ div.controls {
             </svg>
         </a>
         <h5>Viewings</h5>
-            <a href="notifcations.html">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" stroke-width="1.5" stroke="currentColor">
+            <a href="#" id="notifications-bell">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" stroke-width="1.5" stroke="currentColor" >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                   </svg>
+                  <span id="icon-notification-bell"></span>
             </a>
     </section>
 
@@ -654,7 +840,7 @@ div.controls {
                   <p><strong>💷 Make an offer</strong></p>
                 </header>
 
-                <p class="bold-font">Durdans House, Royal College Street, London, NW1 9RD</p>
+                <p class="bold-font">St. Pauls Crescent, Camden, London, NW1</p>
                 <p id="property-price" class="bold-font">£850,000</p>
           
                 <div class="text-input">
@@ -701,7 +887,7 @@ div.controls {
     </header>
 
     <p>Are you sure?</p>
-    <p>Your offer for <span class="bold-font">Durdans House, Royal College Street, London, NW1 9RD</span> will be sent to Camden, who will relay it to the homeowner.</p>
+    <p>Your offer for <span class="bold-font">St. Pauls Crescent, Camden, London, NW1</span> will be sent to the Camden branch, who will relay it to the homeowner.</p>
 
     <section id="offer-summary">
       <p class="bold-font">£850,000</p>

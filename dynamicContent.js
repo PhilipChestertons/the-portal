@@ -64,3 +64,44 @@ document.addEventListener("DOMContentLoaded", function () {
         setupOfferModals();
     }
 });
+
+
+
+
+
+// NOTIFICATIONS
+  document.addEventListener("DOMContentLoaded", function () {
+      const notificationsDialog = document.getElementById("notifcations");
+      const notificationsBell = document.getElementById("notifications-bell");
+      const closeButton = notificationsDialog.querySelector("button[aria-label='Close']");
+
+      notificationsBell.addEventListener("click", (event) => {
+          event.preventDefault(); // Prevent default link behavior
+          if (!notificationsDialog.open) {
+              notificationsDialog.showModal();
+              setTimeout(() => {
+                  notificationsDialog.classList.add("open");
+              }, 10);
+          }
+      });
+
+      closeButton.addEventListener("click", () => {
+          notificationsDialog.classList.remove("open");
+          setTimeout(() => {
+              notificationsDialog.close();
+          }, 300); // Matches transition duration
+      });
+  });
+
+
+  // SHOW NOTIFICATION BELL ON ICON
+  document.addEventListener("DOMContentLoaded", function () {
+      const closeButton = document.getElementById("close");
+      const notificationIcon = document.getElementById("icon-notification-bell");
+      const offerSubmittedDialog = document.getElementById("Offer-Submitted");
+
+      closeButton.addEventListener("click", function () {
+          offerSubmittedDialog.close(); // Close the modal
+          notificationIcon.style.visibility = "visible"; // Show the notification bell
+      });
+  });
