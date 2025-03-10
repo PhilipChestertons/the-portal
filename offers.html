@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offers Detail</title>
+
+  <!-- Pico CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+
+  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="light">
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+
+
+</head>
+
+
+<style>
+
+.viewed-date-time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.viewed-date,
+.viewed-time {
+    display: flex;
+    align-items: center;
+    gap: 0.6em; /* Adjust spacing between the SVG and text */
+    
+}
+
+.viewed-date-time p {
+    margin-top: 1em;
+}
+ 
+.latest-offer-time-status {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+p#offer-status.unconfirmed,
+p#offer-status.cancelled {
+    margin-bottom: 6px;
+}
+
+
+
+ 
+
+div.offer-price-status {
+display: flex;
+justify-content: space-between;
+}
+
+
+p#offer-status. {
+    border-color: red;
+}
+
+
+
+</style>
+
+<body>
+    <main class="container-fluid">
+        <section id="nav">
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+            </a>
+            <h5>Offer detail</h5>
+                <a href="#" id="notifications-bell">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" stroke-width="1.5" stroke="currentColor" >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                      </svg>
+                      <span id="icon-notification-bell"></span>
+                </a>
+        </section>
+        <br>
+        <a href="javascript:void(0);" onclick="history.back();">< Back to list</a>
+        <br>
+      
+      </main>
+
+<article>
+      <h2>Your offers</h2>
+    </article>
+
+<!-- Property in question Card -->
+<article>
+    <p class="bold-font">St. Pauls Cresent, Camden, London, NW1</p>
+    <p class="bold-font">£850,000</p>
+    <article id="">
+
+        <img src="https://www.chestertons.co.uk/_next/image?url=https%3A%2F%2Fmr0.homeflow-assets.co.uk%2Ffiles%2Fphoto%2Fimage%2F44114%2F6570%2F_x_%2FCAM250008_36.jpg&w=1920&q=65" alt="" class="viewing-card-image">
+        <br><br>
+    <a href="property-detail-viewed.html" class="cta purps">View property details</a>
+    
+    </div>
+</article>
+</article>
+
+
+
+<!-- Lastest Offer Card -->
+<article>
+    <p class="bold-font">Your latest offer</p>
+    <article id="">
+    <div class="offer-price-status">
+     <p class="price-offered bold-font purple">£850,000 </p>
+     <p id="offer-status" class="unconfirmed">Offer pending</p>
+    </div>
+
+     <p class="price-negotiated">✅ full asking price</p>
+     <hr>
+    <div class="latest-offer-time-status">
+    <p class="date-offered">Sunday 18<sup>th</sup> March, 10:52 am</p>
+    
+    </div>
+</article>
+</article>
+
+
+<!-- Previous Offers Card -->
+<article>
+    <p class="bold-font">Your previous offer</p>
+    <article id="">
+        <div class="offer-price-status">
+     <p class="price-offered bold-font">£799,000 </p>
+     <p id="offer-status" class="cancelled">Offer rejected</p>
+    </div>
+
+     <p class="price-negotiated">⬇️ 6% below asking price</p>
+     <hr>
+    <div class="latest-offer-time-status">
+    <p class="date-offered">Saturday 18<sup>th</sup> March, 21:52 pm</p>
+    
+    </div>
+</article>
+</article>
+
+<!-- Viewings Card -->
+<article>
+    <p class="bold-font">Your viewings</p>
+
+    <article>
+
+        <div class="viewed-date-time">
+    <div class="viewed-date">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="20" height="20" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+          </svg>
+        <p class="date">Wednesday 9<sup>th</sup> March</p>
+    </div>
+
+    <div class="viewed-time">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="20" height="20" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>    
+        <p>2:30 pm</p>
+    </div>
+</div>
+
+    <div>
+        <p>Accompanied by <span class="neg-name">Sam Thorpe</span></p>
+        </div>
+    </article>
+
+
+    <article>
+
+        <div class="viewed-date-time">
+
+            <div class="viewed-date">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="20" height="20" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                  </svg>
+                <p class="date">Saturday 17<sup>th</sup> March</p>
+            </div>
+
+            <!-- Most recent first -->
+            <div class="viewed-time">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="20" height="20" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>    
+                <p>10:15 am</p>
+            </div>
+
+
+   
+
+    </div>
+
+<div>
+    <p>Accompanied by <span class="neg-name">Riley Postwick</span></p>
+    </div>
+    </article>
+
+</article>
+
+
+<article class="feedback">
+    <p class="bold-font">Feedback</p>
+    <article class="">
+       <table>
+        
+        <tbody>
+          <tr>
+            <th scope="row">First impressions</th>
+            <td>😍 Loved it</td>
+            
+          </tr>
+          <tr>
+            <th scope="row">Condition and presentation</th>
+            <td>🏠 Good</td>
+            
+          </tr>
+          <tr>
+            <th scope="row">Layout and space</th>
+            <td>👌 Perfect</td>
+            
+          </tr>
+          <tr>
+            <th scope="row">Location</th>
+            <td>📍 Good</td>
+            
+          </tr>
+        
+        
+          <tr>
+            <th scope="row">Price</th>
+            <td>🟩 Fair</td>
+            
+          </tr>
+
+          <tr>
+            <th scope="row">External concerns</th>
+            <td>❌ No concerns</td>
+            
+          </tr>
+        </tbody>
+        <p class="feedback-comment">Absolutely loved this property!</p>
+      </table>
+      <small>
+        <p class="date">Wednesday 9<sup>th</sup> April, 20:46 pm</p>
+    </small>
+</article>
+
+
+<article>
+    <p class="feedback-comment">"Another great viewing-just keen to understad what is included in the sale such as fridge, cooker, and anything else that may be relevant".</p>
+    <small>
+        <p class="date">Thursday 9<sup>th</sup> March, 9:56 am</p>
+    </small>
+</article>
+
+
+<article>
+    <p class="feedback-comment">"Such a nice property! I'm certainly convinced, I'll just need to make another viewing to convince my husband-but I'm sold!".</p>
+    <small>
+        <p class="date">Thursday 8<sup>th</sup> March, 18:08 pm</p>
+    </small>
+</article>
+
+    
+
+
+</article>
+
+
+
+
+</main>
+
+<!-- NAVIGATION -->
+<section id="main-nav">
+    <div id="nav-items">
+    <a href="#" role="button">Home</a>
+    <a href="viewings.html" role="button">Viewings</a>
+    <a href="offers.html" role="button">Offers</a>
+    <a href="settings.html" role="button">Settings</a>
+</div>
+</section>
+<!-- END OF NAVIGATION -->
+</body>
+</html>

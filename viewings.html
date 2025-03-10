@@ -8,23 +8,14 @@
   <!-- Pico CSS -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
 
-
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
   <meta name="color-scheme" content="light">
 
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Webfonts -->
-  <link rel="stylesheet" href="https://www.chestertons.co.uk/a/min/1738330258/sites/www-che/css-web-fonts-embedded.css">
-  <style>
-
-
-
-
+<style>
     /* Smooth transition for fieldset appearance */
     fieldset {
       transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -544,23 +535,7 @@ p#viewing-status.unconfirmed {
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
             </svg>
         </a>
-        <select id="navSelect" onchange="navigateToPage()">
-            <option value="index.html">Home</option>
-            <option value="viewings.html">Viewings</option>
-            <option value="offers.html">Offers</option>
-            <option value="index.html">Profile</option>
-        </select>
-        
-        <script>
-        function navigateToPage() {
-            var selectMenu = document.getElementById("navSelect");
-            var selectedValue = selectMenu.value;
-        
-            if (selectedValue) {
-                window.location.href = selectedValue;
-            }
-        }
-        </script>
+        <h5>Viewings</h5>
             <a href="notifcations.html">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
@@ -655,5 +630,16 @@ p#viewing-status.unconfirmed {
 
 </main>
 
+
+<!-- NAVIGATION -->
+<section id="main-nav">
+  <div id="nav-items">
+  <a href="#" role="button">Home</a>
+  <a href="viewings.html" role="button">Viewings</a>
+  <a href="offers.html" role="button">Offers</a>
+  <a href="settings.html" role="button">Settings</a>
+</div>
+</section>
+<!-- END OF NAVIGATION -->
 </body>
 </html>

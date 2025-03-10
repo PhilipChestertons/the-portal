@@ -1,22 +1,72 @@
+@use "node_modules/@picocss/pico/scss/pico.scss";
+
+
+
+
+/* CUSTOM STYLES BELOW HERE! */
+:root:not([data-theme=dark]), [data-theme=light] {
+  --pico-primary-background: #6C207E;
+  --pico-primary: #6C207E;
+  --pico-primary-underline: #6C207E;
+  }
+  
+
+  /* COLOURS */
+  :root {
+    --purple: #6C207E;
+    --pink: #e64097;
+    --cancelled: red;
+    --cancelled-bg: #FFE8ED;
+    --unconfirmed: #D77720;
+    --unconfirmed-bg: #FBF1E9;
+    --completed: #22C55E;
+    --completed-bg: #E9F9EF; 
+    --confirmed: #4085F3;
+    --confirmed-bg: #EFF6FF;
+
+  }
+
+
 .navbar {
     background-color: red;
 }
 
+
+
 @font-face {
-    font-family: myFirstFont;
-    src: url(https://www.chestertons.co.uk/a/min/1738330258/sites/www-che/css-web-fonts-embedded.css);
-  }
-  
- html, body, input, textarea {
-    font-family: "webSans", sans-serif !important;
-    font-weight: 400;
-    
+  font-family: 'fs_albert_prolight';
+  src: url('fonts/fsalbertpro-light-webfont.woff2') format('woff2'),
+       url('fonts/fsalbertpro-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
-  h1, h2, h4 {
-    font-family: "webSans", sans-serif !important;
-  }
-  
+@font-face {
+  font-family: 'fs_albert_probold';
+  src: url('fonts/fsalbertpro-bold-webfont.woff2') format('woff2'),
+       url('fonts/fsalbertpro-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+html, body, input, textarea {
+  font-family: "fs_albert_prolight", sans-serif !important;
+  font-weight: 400;
+}
+
+h1, h2, h4, h5 {
+  font-family: "fs_albert_prolight", sans-serif !important;
+}
+
+.bold-font {
+  font-family: 'fs_albert_probold';
+}
+
+.purple {
+  color: var(--purple);
+}
 
 
 /* Ensure the label acts like a button */
@@ -54,4 +104,118 @@
   }
 
   
+
+
+  .unconfirmed {
+    background-color: #FBF1E9;
+    color: var(--unconfirmed)
+}
+
+p#viewing-status.unconfirmed {
+    color: #D77720;
+    border-color: #D77720;
+}
+
+
+#navSelect {
+    text-align: center;
+    border: none;
+}
+
+
+/* STATUSES */
+.confirmed {
+  color: #4085F3;
+  background-color: #EFF6FF;
+}
+.cancelled {
+  background-color: #FFE8ED;
+  color: #FF1D48  ;
+}
+.unconfirmed {
+  background-color: #FBF1E9;
+  color: #D77720;
+  border-color: #D77720;
+}
+.completed {
+  background-color: #E9F9EF;
+  color: #22C55E;
+}
+
+/* TYPOGRAPHY */
+
+
+
+/* NAVIGATION */
+#nav {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid #A1A1AA;
+  text-align: center;
+  margin-bottom: 0;
   
+}
+
+#nav > a:nth-child(3) > svg {
+  width: 20px;
+}
+
+
+#sub-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #A1A1AA;
+  height: 50px;
+}
+
+/* NAVIGATION */
+section#main-nav {
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  margin-bottom: 0;
+  position: fixed;
+  background: var(--pico-primary-background);
+  border-top: 1px solid #fafafa;
+  z-index: 1000;
+
+}
+
+
+div#nav-items {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+/* PAGES */
+
+/* PAGES > OFFERS */
+
+p#offer-status.unconfirmed,
+p#offer-status.cancelled,
+ {
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 1.7em;
+}
+
+p#offer-status.unconfirmed {
+  border: 1px solid #D77720;
+}
+
+p#offer-status.cancelled {
+  border: 1px solid #FF1D48;
+}
+
+p#offer-status.accepted{
+  border: 1px solid #22C55E;
+}
+
+
