@@ -23,6 +23,13 @@
     --completed-bg: #E9F9EF; 
     --confirmed: #4085F3;
     --confirmed-bg: #EFF6FF;
+    --epc-a: #00C781;
+    --epc-b: #19b459;
+    --epc-c: #8dce46;
+    --epc-d: #ffd500;
+    --epc-e: #fcaa65;
+    --epc-f: #ef8023;
+    --epc-g: #e9153b;
 
   }
 
@@ -251,7 +258,70 @@ table#offers {
 }
 
 
+.epc-box {
+  display: flex;
+  align-items: center;
+  color: black;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  max-width: fit-content;
+}
 
+.bold-font {
+  margin-right: 0px; /* Adjust spacing */
+}
+
+.pointybit {
+  position: relative;
+  left: -1px; /* Tighten the alignment */
+  margin-right: 0.5em;
+}
+
+
+#epc-d {
+  background-color: var(--epc-d);
+  padding-right: 0.20em;
+  padding-left: 0.20em;
+  padding-bottom: 0.03em;
+  width: 1.4em;
+  height: 1.36em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  font-weight: bold;
+  
+}
+
+#epc-b {
+  background-color: var(--epc-b);
+  padding-right: 0.20em;
+  padding-left: 0.20em;
+  padding-bottom: 0.03em;
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  font-weight: bold;
+  
+}
+
+
+
+
+
+#property-headline > table > tbody > tr:nth-child(7) > td > div.epc-box.tag > svg {
+  fill: var(--epc-d);
+}
+
+#property-headline > table > tbody > tr:nth-child(7) > td > div.epc-box.tag > svg > text {
+  fill: black;
+}
 
 /* SETTINGS */
 div.setting {
@@ -259,3 +329,5 @@ div.setting {
   flex-direction: row;
   justify-content: space-between;
 }
+
+
