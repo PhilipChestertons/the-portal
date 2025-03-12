@@ -2291,17 +2291,28 @@ p#viewing-status.unconfirmed {
 .cancelled {
   background-color: #FFE8ED;
   color: #FF1D48;
+  border: 1px solid var(--cancelled);
 }
 
 .unconfirmed {
   background-color: #FBF1E9;
   color: #D77720;
   border-color: #D77720;
+  border: 1px solid var(--unconfirmed);
 }
 
 .completed {
   background-color: #E9F9EF;
   color: #22C55E;
+  border: 1px solid var(--completed);
+}
+
+span.offers {
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 20px;
 }
 
 /* TYPOGRAPHY */
@@ -2367,4 +2378,30 @@ p#offer-status.cancelled {
 
 p#offer-status.accepted {
   border: 1px solid #22C55E;
+}
+
+/* PROPERTY DETAIL */
+#main-title {
+  background-color: #e5e7eb;
+  height: 100px;
+}
+
+div.table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 400px; /* Adjust as needed */
+  border: 1px solid #ddd; /* Optional: adds a border for visibility */
+}
+
+table#offers {
+  overflow: scroll;
+}
+
+/* SETTINGS */
+div.setting {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
